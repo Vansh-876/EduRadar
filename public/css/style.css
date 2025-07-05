@@ -1,0 +1,106 @@
+/* Better spacing and font */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1.5px solid #dee2e6;
+  padding: 0.7rem 1.5rem;
+}
+
+.navbar-brand {
+  font-size: 1.6rem;
+  color: #1d6f42 !important;  /* A green shade */
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand i {
+  margin-right: 8px;
+  font-size: 2.0rem;
+}
+
+.navbar-nav {
+  gap: 1.2rem;
+}
+
+.nav-link {
+  color: #222222 !important; /* Dark gray */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.nav-link i {
+  margin-right: 6px;
+}
+
+.nav-link:hover {
+  color: #1d6f42 !important;  /* Green hover */
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-nav .active {
+  color: #1d6f42 !important;
+  font-weight: 600;
+  border-bottom: 2px solid #1d6f42;
+}
+
+/* Footer Styles */
+.wave-footer {
+  background: linear-gradient(to bottom, #111, #1c1c1c);
+  position: relative;
+  color: #fff;
+  padding-top: 100px;
+  padding-bottom: 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.wave-footer::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: url('https://svgshare.com/i/ubE.svg') no-repeat center top;
+  background-size: cover;
+  z-index: 1;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  font-size: 1.6rem;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #0d6efd;
+}
+
+.footer-links {
+  margin-top: 15px;
+}
+
+.footer-links a {
+  margin: 0 12px;
+  color: #ddd;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #0d6efd;
+}
+
+.footer-copy {
+  margin-top: 15px;
+  color: #aaa;
+  font-size: 0.9rem;
+}

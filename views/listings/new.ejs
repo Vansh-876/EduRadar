@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Listing</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    label {
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Create a New Listing</h2>
+
+  <form action="/listings" method="POST">
+
+    <label>Title</label>
+    <input type="text" name="listing[title]" placeholder="Eg: Sharma Book Depot" required>
+
+    <label>Name</label>
+    <input type="text" name="listing[name]" placeholder="Eg: Sharma Book Depot" required>
+
+    <label>Description</label>
+    <textarea name="listing[description]" placeholder="Brief about your service or place" rows="3" required></textarea>
+
+    <label>Category</label>
+    <select name="listing[category]" required>
+      <option value="">-- Select Category --</option>
+      <option value="stationery">Stationery</option>
+      <option value="library">Library</option>
+      <option value="coaching">Coaching</option>
+    </select>
+
+    <label>Location</label>
+    <input type="text" name="listing[location]" placeholder="Eg: Sector 62, Noida" required>
+
+    <label>Rating (1–5)</label>
+    <input type="number" name="listing[rating]" min="1" max="5" step="0.1" placeholder="Eg: 4.5">
+
+    <label>Open Hours</label>
+    <input type="text" name="listing[openHours]" placeholder="Eg: 9 AM - 8 PM">
+
+    <label>Contact</label>
+    <input type="text" name="listing[contact]" placeholder="Eg: 9876543210">
+
+    <label>Image URL</label>
+    <input type="text" name="listing[image]" placeholder="https://source.unsplash.com/...">
+
+    <button type="submit">Create Listing</button>
+  </form>
+
+</body>
+</html>

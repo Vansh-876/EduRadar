@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Listing - <%= listing.title %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Listing - <%= listing.title %></h1>
+    
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+      <input type="text" name="listing[title]" value="<%= listing.title %>" placeholder="Enter Title" required />
+      
+      <input type="text" name="listing[name]" value="<%= listing.name %>" placeholder="Business Name" required />
+
+      <input type="text" name="listing[category]" value="<%= listing.category %>" placeholder="Category" required />
+
+      <input type="text" name="listing[location]" value="<%= listing.location %>" placeholder="Location" required />
+
+      <textarea name="listing[description]" rows="3" placeholder="Description"><%= listing.description %></textarea>
+
+      <input type="text" name="listing[rating]" value="<%= listing.rating %>" placeholder="Rating (e.g. 4.5)" />
+
+      <input type="text" name="listing[openHours]" value="<%= listing.openHours %>" placeholder="Open Hours" />
+
+      <input type="text" name="listing[contact]" value="<%= listing.contact %>" placeholder="Contact Number" />
+
+      <input type="text" name="listing[image]" value="<%= listing.image %>" placeholder="Image URL" />
+
+      <button type="submit">Update Listing</button>
+    </form>
+
+    <a href="/listings/<%= listing._id %>">← Back to Listing</a>
+  </div>
+</body>
+</html>
