@@ -1,86 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>New Listing</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      background: #f9f9f9;
-    }
-    form {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      width: 400px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    label {
-      font-weight: bold;
-    }
-    button {
-      padding: 10px 20px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-  </style>
-</head>
-<body>
+<% layout("/layouts/boilerplate") %>
 
-  <h2 style="text-align:center;">Create a New Listing</h2>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+          <h2 class="text-center mb-4 fw-bold">Create a New Listing</h2>
 
-  <form action="/listings" method="POST">
+          <form action="/listings" method="POST">
+            <!-- Title -->
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control rounded-3" id="title" name="listing[title]" placeholder="e.g. Urban Book Vault" required>
+            </div>
 
-    <label>Title</label>
-    <input type="text" name="listing[title]" placeholder="Eg: Sharma Book Depot" required>
+            <!-- Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Business Name</label>
+              <input type="text" class="form-control rounded-3" id="name" name="listing[name]" placeholder="e.g. Urban Book Vault" required>
+            </div>
 
-    <label>Name</label>
-    <input type="text" name="listing[name]" placeholder="Eg: Sharma Book Depot" required>
+            <!-- Category -->
+            <div class="mb-3">
+              <label for="category" class="form-label">Category</label>
+              <select class="form-select rounded-3" id="category" name="listing[category]" required>
+                <option value="">-- Select Category --</option>
+                <option value="stationery">Stationery</option>
+                <option value="bookstore">Bookstore</option>
+                <option value="library">Library</option>
+                <option value="coaching">Coaching</option>
+                <option value="cyber">Cyber Cafe</option>
+              </select>
+            </div>
 
-    <label>Description</label>
-    <textarea name="listing[description]" placeholder="Brief about your service or place" rows="3" required></textarea>
+            <!-- Location -->
+            <div class="mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input type="text" class="form-control rounded-3" id="location" name="listing[location]" placeholder="e.g. Hazratganj, Lucknow" required>
+            </div>
 
-    <label>Category</label>
-    <select name="listing[category]" required>
-      <option value="">-- Select Category --</option>
-      <option value="stationery">Stationery</option>
-      <option value="library">Library</option>
-      <option value="coaching">Coaching</option>
-    </select>
+            <!-- Description -->
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control rounded-3" id="description" name="listing[description]" rows="3" placeholder="Brief about the place..." required></textarea>
+            </div>
 
-    <label>Location</label>
-    <input type="text" name="listing[location]" placeholder="Eg: Sector 62, Noida" required>
+            <!-- Contact -->
+            <div class="mb-3">
+              <label for="contact" class="form-label">Contact</label>
+              <input type="text" class="form-control rounded-3" id="contact" name="listing[contact]" placeholder="e.g. 9876543210">
+            </div>
 
-    <label>Rating (1–5)</label>
-    <input type="number" name="listing[rating]" min="1" max="5" step="0.1" placeholder="Eg: 4.5">
+            <!-- Image -->
+            <div class="mb-3">
+              <label for="image" class="form-label">Image URL</label>
+              <input type="url" class="form-control rounded-3" id="image" name="listing[image]" placeholder="https://source.unsplash.com/..." >
+            </div>
 
-    <label>Open Hours</label>
-    <input type="text" name="listing[openHours]" placeholder="Eg: 9 AM - 8 PM">
+            <!-- Submit Button -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-dark rounded-3 fw-semibold">
+                ➕ Add Listing
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <label>Contact</label>
-    <input type="text" name="listing[contact]" placeholder="Eg: 9876543210">
 
-    <label>Image URL</label>
-    <input type="text" name="listing[image]" placeholder="https://source.unsplash.com/...">
 
-    <button type="submit">Create Listing</button>
-  </form>
 
-</body>
-</html>

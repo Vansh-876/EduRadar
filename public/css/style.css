@@ -1,24 +1,32 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
 /* Better spacing and font */
 .navbar {
   background-color: #ffffff;
   border-bottom: 1.5px solid #dee2e6;
   padding: 0.7rem 1.5rem;
+  height: 5rem;
 }
 
 .navbar-brand {
-  font-size: 1.6rem;
+  margin-left: 50px;
+  font-size: 1.8rem !important;
   color: #1d6f42 !important;  /* A green shade */
   display: flex;
+  font-weight: 400 !important;
   align-items: center;
 }
 
 .navbar-brand i {
-  margin-right: 8px;
-  font-size: 2.0rem;
+  margin-right: 10px;
+  font-size: 2.6rem! important;
 }
 
 .navbar-nav {
-  gap: 1.2rem;
+  gap: 2.0rem;
+  margin-right: 120px;
 }
 
 .nav-link {
@@ -43,6 +51,7 @@
   font-weight: 600;
   border-bottom: 2px solid #1d6f42;
 }
+
 
 /* Footer Styles */
 .wave-footer {

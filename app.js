@@ -5,88 +5,55 @@ const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require('method-override');
 const ejsMate = require("ejs-mate");
-
+const sampleListings = require("./init/data.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/eduradar";
 
-main()
-  .then(() => {
-    console.log("connected to db");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-async function main() {
-  await mongoose.connect(MONGO_URL);
-}
-
-
-// Set EJS view engine
+// Set EJS view engine and middleware
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-app.engine("ejs",ejsMate);
-app.use(express.static(path.join(__dirname,"/public")));
-// Middleware to set default locals
+app.engine("ejs", ejsMate);
+app.use(express.static(path.join(__dirname, "/public")));
+
 app.use((req, res, next) => {
-  res.locals.activePage = null; // default value to avoid undefined errors
+  res.locals.activePage = null;
   next();
 });
 
-// Root route
-app.get("/", (req, res) => {
-  res.send("hi ,im root");
-});
+async function seedDB() {
+  try {
+    await Listing.deleteMany({});
+    console.log("Old listings deleted 🗑️");
+    await Listing.insertMany(sampleListings);
+    console.log("Seeding completed ✅");
+  } catch (err) {
+    console.error("Seeding failed ❌", err);
+  }
+}
 
-// Index route
-app.get("/listings", async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index", { allListings });
-});
+async function main() {
+  try {
+    await mongoose.connect(MONGO_URL);
+    console.log("connected to db ✅");
 
-// New listing form route
-app.get("/listings/new", async (req, res) => {
-  res.render("listings/new.ejs");
-});
+    // Seed the database
+    await seedDB();
 
-// Show route
-app.get("/listings/:id", async (req, res) => {
-  let { id } = req.params;
-  const listing = await Listing.findById(id);
-  res.render("listings/show", { listing });
-});
+    // Start server only after DB is connected and seeded
+    app.listen(8080, () => {
+      console.log("server is listening to port 8080 🚀");
+    });
 
-// Create route
-app.post("/listings", async (req, res) => {
-  const newListing = new Listing(req.body.listing); // 👈 req.body.listing expected from form
-  await newListing.save();
-  console.log("New Listing Saved:", newListing);
-  res.redirect("/listings");
-});
+  } catch (err) {
+    console.log("Error in DB connection ❌", err);
+  }
+}
 
-//edit route
-app.get("/listings/:id/edit", async (req, res) => {
-    let { id } = req.params;
-    const listing = await Listing.findById(id);
-    res.render("listings/edit", { listing });
-});
+main();
 
-//update route
-app.put("/listings/:id", async (req, res) => {
-    let { id } = req.params;
-    await Listing.findByIdAndUpdate(id, {...req.body.listing });
-res.redirect(`/listings/${id}`);
-});
-
-//delete route
-app.delete("/listings/:id", async (req, res) => {
-    const { id } = req.params;
-    await Listing.findByIdAndDelete(id);
-    res.redirect("/listings");
-});
-//active page
+// Routes
 app.get("/", (req, res) => {
   res.render("home", { activePage: "home" });
 });
@@ -100,13 +67,30 @@ app.get("/listings/new", (req, res) => {
   res.render("listings/new", { activePage: "new" });
 });
 
-app.get("/listings/:id", async (req, res) => {
-  const listing = await Listing.findById(req.params.id);
-  res.render("listings/show", { listing, activePage: null }); // or use "details"
+app.post("/listings", async (req, res) => {
+  const newListing = new Listing(req.body.listing);
+  await newListing.save();
+  res.redirect("/listings");
 });
 
+app.get("/listings/:id", async (req, res) => {
+  const listing = await Listing.findById(req.params.id);
+  res.render("listings/show", { listing, activePage: null });
+});
 
-// Start server
-app.listen(8080, () => {
-  console.log("server is listening to port 8080");
+app.get("/listings/:id/edit", async (req, res) => {
+  const listing = await Listing.findById(req.params.id);
+  res.render("listings/edit", { listing });
+});
+
+app.put("/listings/:id", async (req, res) => {
+  const { id } = req.params;
+  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  res.redirect(`/listings/${id}`);
+});
+
+app.delete("/listings/:id", async (req, res) => {
+  const { id } = req.params;
+  await Listing.findByIdAndDelete(id);
+  res.redirect("/listings");
 });
