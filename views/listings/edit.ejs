@@ -1,86 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Listing - <%= listing.title %></title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
+<% layout("/layouts/boilerplate") %>
 
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
+<div class="container py-5">
+  <h2 class="mb-4">✏️ Edit Listing</h2>
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    input, textarea {
-      padding: 10px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button {
-      padding: 10px;
-      font-size: 1rem;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #218838;
-    }
-
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Edit Listing - <%= listing.title %></h1>
+  <form class="needs-validation" novalidate action="/listings/<%= listing._id %>?_method=PUT" method="POST">
     
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
-      <input type="text" name="listing[title]" value="<%= listing.title %>" placeholder="Enter Title" required />
-      
-      <input type="text" name="listing[name]" value="<%= listing.name %>" placeholder="Business Name" required />
+    <!-- Title -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="listing[title]"
+        value="<%= listing.title %>"
+        required
+      />
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please provide a title.</div>
+    </div>
 
-      <input type="text" name="listing[category]" value="<%= listing.category %>" placeholder="Category" required />
+    <!-- Name -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Owner / Business Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="listing[name]"
+        value="<%= listing.name %>"
+        required
+      />
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please provide the name.</div>
+    </div>
 
-      <input type="text" name="listing[location]" value="<%= listing.location %>" placeholder="Location" required />
+    <!-- Location -->
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="location"
+        name="listing[location]"
+        value="<%= listing.location %>"
+        required
+      />
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please provide a location.</div>
+    </div>
 
-      <textarea name="listing[description]" rows="3" placeholder="Description"><%= listing.description %></textarea>
+    <!-- Category -->
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <select class="form-select" id="category" name="listing[category]" required>
+        <option value="">Choose...</option>
+        <option value="stationery" <%= listing.category === 'stationery' ? 'selected' : '' %>>Stationery</option>
+        <option value="library" <%= listing.category === 'library' ? 'selected' : '' %>>Library</option>
+        <option value="cyber" <%= listing.category === 'cyber' ? 'selected' : '' %>>Cyber Cafe</option>
+        <option value="bookstore" <%= listing.category === 'bookstore' ? 'selected' : '' %>>Bookstore</option>
+        <option value="coaching" <%= listing.category === 'coaching' ? 'selected' : '' %>>Coaching</option>
+      </select>
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please select a category.</div>
+    </div>
 
-      <input type="text" name="listing[rating]" value="<%= listing.rating %>" placeholder="Rating (e.g. 4.5)" />
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="listing[description]"
+        rows="3"
+        required
+      ><%= listing.description %></textarea>
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please enter a short description.</div>
+    </div>
 
-      <input type="text" name="listing[openHours]" value="<%= listing.openHours %>" placeholder="Open Hours" />
+    <!-- Image -->
+    <div class="mb-3">
+      <label for="image" class="form-label">Image URL</label>
+      <input
+        type="url"
+        class="form-control"
+        id="image"
+        name="listing[image]"
+        value="<%= listing.image %>"
+      />
+      <div class="form-text">Optional: Provide a valid image URL</div>
+    </div>
 
-      <input type="text" name="listing[contact]" value="<%= listing.contact %>" placeholder="Contact Number" />
+    <!-- Contact & Hours in a row -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="contact" class="form-label">Contact</label>
+        <input
+          type="text"
+          class="form-control"
+          id="contact"
+          name="listing[contact]"
+          value="<%= listing.contact %>"
+        />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="openHours" class="form-label">Open Hours</label>
+        <input
+          type="text"
+          class="form-control"
+          id="openHours"
+          name="listing[openHours]"
+          value="<%= listing.openHours %>"
+        />
+      </div>
+    </div>
 
-      <input type="text" name="listing[image]" value="<%= listing.image %>" placeholder="Image URL" />
+    <!-- Submit -->
+    <button type="submit" class="btn btn-primary mt-3">💾 Save Changes</button>
+  </form>
+</div>
 
-      <button type="submit">Update Listing</button>
-    </form>
-
-    <a href="/listings/<%= listing._id %>">← Back to Listing</a>
-  </div>
-</body>
-</html>
+<!-- Bootstrap Validation Script -->
+<script>
+  (() => {
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+</script>
