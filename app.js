@@ -8,6 +8,8 @@ const ejsMate = require("ejs-mate");
 const sampleListings = require("./init/data.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const listingSchema = require("./schema.js");
+
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/eduradar";
 
@@ -61,7 +63,17 @@ app.get("/", (req, res) => {
   res.render("home", { activePage: "home" });
 });
 
-// Listing Routes
+const validateListing = (req, res, next) => {
+    let {error} =  listingSchema.validateAsync(req.body);
+if (error) {
+  let errMsg = error.details.map((el) => el.message).join(", ");
+    throw new ExpressError(400, errMsg);
+  }else { 
+next();
+} 
+};
+
+// index Routes
 app.get("/listings", wrapAsync(async (req, res, next) => {
   const allListings = await Listing.find({});
   res.render("listings/index", { allListings, activePage: "listings" });
@@ -74,12 +86,18 @@ app.get("/listings/new", (req, res) => {
 
 // Create Listing Routes
 app.post("/listings", wrapAsync(async (req, res, next) => {
+  let result = await listingSchema.validateAsync(req.body);
+  console.log(result);
+if (result.error) {
+    throw new ExpressError(400, result.error);
+  }
+
   const newListing = new Listing(req.body.listing);
   await newListing.save();
   res.redirect("/listings");
 }));
 
-// Show and Edit Listing Routes
+// Show Listing Routes
 app.get("/listings/:id", wrapAsync(async (req, res, next) => {
   const listing = await Listing.findById(req.params.id);
   res.render("listings/show", { listing, activePage: null });
