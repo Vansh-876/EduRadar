@@ -1,86 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>New Listing</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      background: #f9f9f9;
-    }
-    form {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      width: 400px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    label {
-      font-weight: bold;
-    }
-    button {
-      padding: 10px 20px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-  </style>
-</head>
+<% layout("/layouts/boilerplate") %>
 <body>
+<div class="container py-5">
+  <h2 class="mb-4 fw-semibold" style="font-family: 'Plus Jakarta Sans', sans-serif;">Add New Listing</h2>
 
-  <h2 style="text-align:center;">Create a New Listing</h2>
+  <form class="needs-validation" novalidate method="POST" action="/listings">
 
-  <form action="/listings" method="POST">
+    <!-- Business Name -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Business Name</label>
+      <input type="text" class="form-control" id="name" name="listing[name]" placeholder="e.g. Smart Stationers" required>
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please enter the business name.</div>
+    </div>
 
-    <label>Title</label>
-    <input type="text" name="listing[title]" placeholder="Eg: Sharma Book Depot" required>
+    <!-- Location -->
+    <div class="mb-3">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" class="form-control" id="location" name="listing[location]" placeholder="e.g. MG Road, Pune" required>
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please provide the location.</div>
+    </div>
 
-    <label>Name</label>
-    <input type="text" name="listing[name]" placeholder="Eg: Sharma Book Depot" required>
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" rows="3" name="listing[description]" placeholder="e.g. Best-selling stationery items for students and offices." required></textarea>
+      <div class="valid-feedback">Looks great!</div>
+      <div class="invalid-feedback">Please write a short description.</div>
+    </div>
 
-    <label>Description</label>
-    <textarea name="listing[description]" placeholder="Brief about your service or place" rows="3" required></textarea>
+    <!-- Image + Category -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="image" class="form-label">Image URL</label>
+        <input type="text" class="form-control" id="image" name="listing[image]" placeholder="e.g. https://example.com/image.jpg" required>
+        <div class="valid-feedback">Image URL added.</div>
+        <div class="invalid-feedback">Please provide a valid image URL.</div>
+      </div>
 
-    <label>Category</label>
-    <select name="listing[category]" required>
-      <option value="">-- Select Category --</option>
-      <option value="stationery">Stationery</option>
-      <option value="library">Library</option>
-      <option value="coaching">Coaching</option>
-    </select>
+      <div class="col-md-6 mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" id="category" name="listing[category]" placeholder="e.g. Stationery" required>
+        <div class="valid-feedback">Category selected.</div>
+        <div class="invalid-feedback">Category is required.</div>
+      </div>
+    </div>
 
-    <label>Location</label>
-    <input type="text" name="listing[location]" placeholder="Eg: Sector 62, Noida" required>
+    <!-- Rating -->
+    <div class="mb-3">
+      <label for="rating" class="form-label">Rating</label>
+      <input type="number" step="0.1" min="1" max="5" class="form-control" id="rating" name="listing[rating]" placeholder="e.g. 4.5" required>
+      <div class="valid-feedback">Thank you for rating.</div>
+      <div class="invalid-feedback">Please provide a rating between 1 and 5.</div>
+    </div>
 
-    <label>Rating (1–5)</label>
-    <input type="number" name="listing[rating]" min="1" max="5" step="0.1" placeholder="Eg: 4.5">
+    <!-- Opening Hours -->
+    <div class="mb-3">
+      <label for="hours" class="form-label">Opening Hours</label>
+      <input type="text" class="form-control" id="hours" name="listing[openHours]" placeholder="e.g. 9 AM - 8 PM" required>
+      <div class="valid-feedback">Good hours!</div>
+      <div class="invalid-feedback">Please mention the opening hours.</div>
+    </div>
 
-    <label>Open Hours</label>
-    <input type="text" name="listing[openHours]" placeholder="Eg: 9 AM - 8 PM">
+    <!-- Contact -->
+    <div class="mb-3">
+      <label for="contact" class="form-label">Contact</label>
+      <input type="tel" class="form-control" id="contact" name="listing[contact]" placeholder="e.g. 9988776655" required>
+      <div class="valid-feedback">Contact looks fine.</div>
+      <div class="invalid-feedback">Please provide a contact number.</div>
+    </div>
 
-    <label>Contact</label>
-    <input type="text" name="listing[contact]" placeholder="Eg: 9876543210">
-
-    <label>Image URL</label>
-    <input type="text" name="listing[image]" placeholder="https://source.unsplash.com/...">
-
-    <button type="submit">Create Listing</button>
+    <button type="submit" class="btn btn-success px-4">Submit</button>
   </form>
-
+</div>
 </body>
-</html>
