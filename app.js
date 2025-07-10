@@ -6,10 +6,12 @@ const path = require("path");
 const methodOverride = require('method-override');
 const ejsMate = require("ejs-mate");
 const sampleListings = require("./init/data.js");
-const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const listingSchema = require("./schema.js");
-
+const Review = require("./models/review.js");
+const listingsRoutes = require("./routes/listing.js");
+const reviewsRoutes = require("./routes/review.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/eduradar";
 
@@ -58,70 +60,35 @@ async function main() {
 
 main();
 
+// Session configuration
+const sessionConfig = {
+  secret: "your_secret_key",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 1 week
+    maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+    httpOnly: true
+  }
+};
+
+
 // Routes
 app.get("/", (req, res) => {
   res.render("home", { activePage: "home" });
 });
 
-const validateListing = (req, res, next) => {
-    let {error} =  listingSchema.validateAsync(req.body);
-if (error) {
-  let errMsg = error.details.map((el) => el.message).join(", ");
-    throw new ExpressError(400, errMsg);
-  }else { 
-next();
-} 
-};
+app.use(session(sessionConfig));
+app.use(flash());
 
-// index Routes
-app.get("/listings", wrapAsync(async (req, res, next) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index", { allListings, activePage: "listings" });
-}));
-
-// New Listing Routes
-app.get("/listings/new", (req, res) => {
-  res.render("listings/new", { activePage: "new" });
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
 });
 
-// Create Listing Routes
-app.post("/listings", wrapAsync(async (req, res, next) => {
-  let result = await listingSchema.validateAsync(req.body);
-  console.log(result);
-if (result.error) {
-    throw new ExpressError(400, result.error);
-  }
-
-  const newListing = new Listing(req.body.listing);
-  await newListing.save();
-  res.redirect("/listings");
-}));
-
-// Show Listing Routes
-app.get("/listings/:id", wrapAsync(async (req, res, next) => {
-  const listing = await Listing.findById(req.params.id);
-  res.render("listings/show", { listing, activePage: null });
-})); 
-
-// Edit Listing Routes
-app.get("/listings/:id/edit", wrapAsync(async (req, res, next) => {
-  const listing = await Listing.findById(req.params.id);
-  res.render("listings/edit", { listing }); 
-}));
-
-// Update Listing Routes
-app.put("/listings/:id", wrapAsync(async (req, res, next) => {
-  const { id } = req.params;
-  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-  res.redirect(`/listings/${id}`);
-}));
-
-// Delete Listing Routes
-app.delete("/listings/:id", wrapAsync(async (req, res, next) => {
-  const { id } = req.params; 
-  await Listing.findByIdAndDelete(id);
-  res.redirect("/listings");
-}));
+app.use("/listings", listingsRoutes);
+app.use("/listings/:id/reviews", reviewsRoutes);
 
 // 404 Error Handling
 app.use((err, req, res, next) => {

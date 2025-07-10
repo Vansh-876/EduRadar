@@ -2,34 +2,26 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-<div class="container py-5" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+<div class="container py-5 mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
 
-  <div class="row g-4">
-   <!-- Left: Image with fallback -->
-<div class="col-md-6">
-  <div class="image-box">
-    <img src="<%= listing.image %>" alt="Listing Image"
-      onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-text\'><span>📦</span><br>No image available</div>';">
-  </div>
-</div>
-
-
-
-    <!-- Right: Details -->
-    <div class="col-md-6">
-      <h2 class="fw-semibold"><%= listing.title %></h2>
-      <p class="text-muted mb-2" style="font-size: 15px;"><%= listing.location %></p>
-      <p class="mb-3" style="font-size: 16px;"><%= listing.description %></p>
-
-      <div class="mb-3">
-        <span class="badge bg-primary me-2">⭐ <%= listing.rating %> Rating</span>
-        <span class="badge bg-success me-2"><%= listing.category.toUpperCase() %></span>
-        <% if (listing.verified) { %>
-          <span class="badge bg-info text-dark">✔ Verified</span>
+      <!-- Image Section
+      <div class="image-box text-center mb-4">
+        <% if (listing.image) { %>
+          <img src="<%= listing.image %>" alt="Listing Image" class="img-fluid rounded shadow-sm"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'fallback-text\'><span>📦</span><br>No image available</div>';">
+        <% } else { %>
+          <div class="fallback-text text-muted text-center py-4 border rounded">📦<br>No image available</div>
         <% } %>
-      </div>
+      </div> -->
 
-      <ul class="list-group list-group-flush mb-3" style="font-size: 14px;">
+      <!-- Listing Details -->
+      <h2 class="fw-semibold text-left"><%= listing.title %></h2>
+      <p class="text-muted text-left mb-2"><%= listing.location %></p>
+      <p class="text-left"><%= listing.description %></p>
+
+      <ul class="list-group list-group-flush mb-3">
         <li class="list-group-item"><strong>Business Name:</strong> <%= listing.name %></li>
         <li class="list-group-item"><strong>Opening Hours:</strong> <%= listing.openHours %></li>
         <li class="list-group-item"><strong>Contact:</strong> <%= listing.contact %></li>
@@ -43,12 +35,44 @@
         <% } %>
       </ul>
 
-      <div class="d-flex gap-2">
+      <!-- Actions -->
+      <div class="d-flex justify-content-left gap-3 mb-4">
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-outline-primary">Edit</a>
         <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-outline-danger">Delete</button>
         </form>
       </div>
+<hr>
+      <!-- Review Form -->
+      <h4 class="text-left mb-3 mt-3"> Leave a Review</h4>
+        <form class="needs-validation" novalidate method="POST" action="/listings/<%= listing._id %>/reviews"></form>
+      <form action="/listings/<%= listing._id %>/reviews" method="POST" class="needs-validation">
+        <div class="mb-3">
+          <label for="rating">Rating</label>
+          <input type="range" class="form-range" name="review[rating]" min="1" max="5" required>
+        </div>
+        <div class="mb-3">
+          <label for="comment">Comment</label>
+          <textarea class="form-control" name="review[comment]" rows="3" required></textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please enter a comment.</div>
+        </div>
+        <button class="btn btn-success mt-2 ">Submit Review</button>
+      </form>
+<hr>
+      <!-- Reviews Section -->
+       <P><B>All Reviews</B></P>
+       <% for (let review of listing.reviews) { %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">vansh kumar garg</h5>
+            <p class="card-text"><%= review.comment %></p>
+            <p class="card-text"><%= review.rating %> ★</p>
+          </div>
+        </div>
+      <% } %>
+      <h4 class="text-left mt-5 mb-3">Reviews</h4>
+
     </div>
   </div>
 </div>
