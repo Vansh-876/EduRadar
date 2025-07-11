@@ -8,8 +8,8 @@
       aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+    <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
       <div class="navbar-nav">
         <a class="nav-link <% if(activePage === 'home'){ %>active<% } %>" href="/">
           <i class="bi bi-house-door"></i>Home
@@ -21,6 +21,19 @@
           <i class="bi bi-plus-circle"></i>New Listing
         </a>
       </div>
+    </div>
+
+    <div class="navbar-nav ms-auto">
+      <% if (!currentUser ) { %>
+        <a class="nav-link" href="/register">Sign Up</a>
+        <a class="nav-link" href="/login">Log In</a>
+      <% } %>
+      <% if (currentUser) { %>
+        <a class="nav-link" href="/logout">Log Out</a>
+        <a class="nav-link" href="/profile">
+          <i class="bi bi-person-circle"></i>Profile
+        </a>
+      <% } %>
     </div>
   </div>
 </nav>

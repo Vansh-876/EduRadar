@@ -10,14 +10,18 @@ const ExpressError = require("./utils/ExpressError.js");
 const Review = require("./models/review.js");
 const listingsRoutes = require("./routes/listing.js");
 const reviewsRoutes = require("./routes/review.js");
+const UserRoutes = require("./routes/user.js");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/eduradar";
 
 // Set EJS view engine and middleware
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", (path.join(__dirname, "views")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.engine("ejs", ejsMate);
@@ -81,14 +85,32 @@ app.get("/", (req, res) => {
 app.use(session(sessionConfig));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currentUser = req.user;
   next();
+});
+
+app.get("/demo", async (req, res) => {
+  let fakeuser = new User({ 
+    email: "test@example.com",
+    username: "testuser"
+  });
+  let registeredUser = await User.register(fakeuser, "testpassword");
+  res.send(registeredUser);
 });
 
 app.use("/listings", listingsRoutes);
 app.use("/listings/:id/reviews", reviewsRoutes);
+app.use("/", UserRoutes);
 
 // 404 Error Handling
 app.use((err, req, res, next) => {
