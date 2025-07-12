@@ -77,40 +77,40 @@ const sessionConfig = {
 };
 
 
-// Routes
-app.get("/", (req, res) => {
-  res.render("home", { activePage: "home" });
-});
-
+// Session and Flash
 app.use(session(sessionConfig));
 app.use(flash());
 
+// Passport Setup
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
 
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// Locals middleware (must come after passport)
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  next();
+});
+
+app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
 
-app.get("/demo", async (req, res) => {
-  let fakeuser = new User({ 
-    email: "test@example.com",
-    username: "testuser"
-  });
-  let registeredUser = await User.register(fakeuser, "testpassword");
-  res.send(registeredUser);
+
+// ✅ THEN define your routes
+app.get("/", (req, res) => {
+  res.render("home", { activePage: "home" });
 });
 
 app.use("/listings", listingsRoutes);
 app.use("/listings/:id/reviews", reviewsRoutes);
 app.use("/", UserRoutes);
+
 
 // 404 Error Handling
 app.use((err, req, res, next) => {

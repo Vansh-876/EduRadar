@@ -6,7 +6,7 @@
   <div class="row justify-content-center">
     <div class="col-md-10 col-lg-8">
 
-      <!-- Image Section
+      <!-- Image Section -->
       <div class="image-box text-center mb-4">
         <% if (listing.image) { %>
           <img src="<%= listing.image %>" alt="Listing Image" class="img-fluid rounded shadow-sm"
@@ -14,11 +14,12 @@
         <% } else { %>
           <div class="fallback-text text-muted text-center py-4 border rounded">📦<br>No image available</div>
         <% } %>
-      </div> -->
+      </div>
 
       <!-- Listing Details -->
       <h2 class="fw-semibold text-left"><%= listing.title %></h2>
       <p class="text-muted text-left mb-2"><%= listing.location %></p>
+      </i>
       <p class="text-left"><%= listing.description %></p>
 
       <ul class="list-group list-group-flush mb-3">
@@ -36,16 +37,16 @@
       </ul>
 
       <!-- Actions -->
-      <div class="d-flex justify-content-left gap-3 mb-4">
-        <a href="/listings/<%= listing._id %>/edit" class="btn btn-outline-primary">Edit</a>
-        <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
-          <button type="submit" class="btn btn-outline-danger">Delete</button>
-        </form>
-      </div>
-<hr>
+<% if (currentUser && listing.owner && currentUser._id.toString() === listing.owner.toString()) { %>
+  <a href="/listings/<%= listing._id %>/edit" class="btn btn-outline-primary">Edit</a>
+  <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST" style="display:inline;">
+    <button class="btn btn-outline-danger">Delete</button>
+  </form>
+<% } %>
+u
+<% if(currentUser)  { %>
       <!-- Review Form -->
       <h4 class="text-left mb-3 mt-3"> Leave a Review</h4>
-        <form class="needs-validation" novalidate method="POST" action="/listings/<%= listing._id %>/reviews"></form>
       <form action="/listings/<%= listing._id %>/reviews" method="POST" class="needs-validation">
         <div class="mb-3">
           <label for="rating">Rating</label>
@@ -59,13 +60,14 @@
         </div>
         <button class="btn btn-success mt-2 ">Submit Review</button>
       </form>
+      <% } %>
 <hr>
       <!-- Reviews Section -->
        <P><B>All Reviews</B></P>
        <% for (let review of listing.reviews) { %>
         <div class="card mb-3">
           <div class="card-body">
-            <h5 class="card-title">vansh kumar garg</h5>
+            <h5 class="card-title"><%= @review.author.username%></h5>
             <p class="card-text"><%= review.comment %></p>
             <p class="card-text"><%= review.rating %> ★</p>
           </div>

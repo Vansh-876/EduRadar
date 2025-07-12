@@ -10,6 +10,7 @@ const sampleListings = [
     contact: "9876543210",
     image: "https://source.unsplash.com/300x200/?stationery,store",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["notebooks", "pens", "xerox"]
   },
   {
@@ -23,6 +24,7 @@ const sampleListings = [
     contact: "9123456780",
     image: "https://source.unsplash.com/300x200/?books,store",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["registers", "drawing books"]
   },
   {
@@ -36,6 +38,7 @@ const sampleListings = [
     contact: "9988776655",
     image: "https://source.unsplash.com/300x200/?pen,stationery",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["office", "school", "print"]
   },
   {
@@ -49,6 +52,7 @@ const sampleListings = [
     contact: "9090909090",
     image: "https://source.unsplash.com/300x200/?paper,shop",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["papers", "xerox"]
   },
   {
@@ -62,6 +66,7 @@ const sampleListings = [
     contact: "8800880088",
     image: "https://source.unsplash.com/300x200/?stationery",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["notes", "files", "refills"]
   },
 
@@ -77,6 +82,7 @@ const sampleListings = [
     contact: "9876543210",
     image: "https://source.unsplash.com/300x200/?cyber,cafe",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["internet", "print", "scan"]
   },
   {
@@ -90,6 +96,7 @@ const sampleListings = [
     contact: "9090909090",
     image: "https://source.unsplash.com/300x200/?computer,cyber",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["documents", "wifi"]
   },
   {
@@ -103,6 +110,7 @@ const sampleListings = [
     contact: "9123456780",
     image: "https://source.unsplash.com/300x200/?internet,cafe",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["email", "aadhar print", "resume"]
   },
   {
@@ -116,6 +124,7 @@ const sampleListings = [
     contact: "9988776655",
     image: "https://source.unsplash.com/300x200/?broadband,pc",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["form fill", "exam print"]
   },
   {
@@ -129,6 +138,7 @@ const sampleListings = [
     contact: "9876543210",
     image: "https://source.unsplash.com/300x200/?cybercafe,pc",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["online", "wifi"]
   },
 
@@ -144,6 +154,7 @@ const sampleListings = [
     contact: "9876543210",
     image: "https://source.unsplash.com/300x200/?library,reading",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["books", "wifi", "study"]
   },
   {
@@ -157,6 +168,7 @@ const sampleListings = [
     contact: "9123456780",
     image: "https://source.unsplash.com/300x200/?books,library",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["peaceful", "notes", "magazines"]
   },
   {
@@ -170,6 +182,7 @@ const sampleListings = [
     contact: "9988776655",
     image: "https://source.unsplash.com/300x200/?study,library",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["govt exams", "free wifi"]
   },
   {
@@ -183,6 +196,7 @@ const sampleListings = [
     contact: "9090909090",
     image: "https://source.unsplash.com/300x200/?public,library",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["air cooled", "ebooks"]
   },
   {
@@ -196,6 +210,7 @@ const sampleListings = [
     contact: "8800880088",
     image: "https://source.unsplash.com/300x200/?library",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["paid seats", "magazines"]
   },
 
@@ -211,6 +226,7 @@ const sampleListings = [
     contact: "9876543210",
     image: "https://source.unsplash.com/300x200/?classroom,coaching",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["SSC", "Bank", "Railway"]
   },
    {
@@ -224,6 +240,7 @@ const sampleListings = [
     contact: "9999999999",
     image: "https://source.unsplash.com/300x200/?coaching,classroom",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["IIT", "NEET", "foundation"]
   },
   {
@@ -237,6 +254,7 @@ const sampleListings = [
     contact: "9811122233",
     image: "https://source.unsplash.com/300x200/?teaching,students",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["SSC", "Bank", "UPSC"]
   },
   {
@@ -250,6 +268,7 @@ const sampleListings = [
     contact: "9823456789",
     image: "https://source.unsplash.com/300x200/?study,classroom",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["mentorship", "exams"]
   },
   {
@@ -263,6 +282,7 @@ const sampleListings = [
     contact: "9988776655",
     image: "https://source.unsplash.com/300x200/?students,tutor",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["10th", "12th", "CUET"]
   },
 
@@ -278,6 +298,7 @@ const sampleListings = [
     contact: "9876543210",
     image: "init/images/bookshop.png",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["academic", "novels"]
   },
   {
@@ -291,6 +312,7 @@ const sampleListings = [
     contact: "9123456780",
     image: "init/images/bookshop.png",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["discount", "guide"]
   },
   {
@@ -304,6 +326,7 @@ const sampleListings = [
     contact: "9811122233",
     image: "init/images/bookshop.png",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["writing", "stationery"]
   },
   {
@@ -317,6 +340,7 @@ const sampleListings = [
     contact: "9090909090",
     image: "init/images/bookshop.png",
     verified: true,
+    owner: "6870b24612c47ddfa98a0fa5",
     tags: ["cozy", "reading"]
   },
   {
@@ -330,7 +354,8 @@ const sampleListings = [
     contact: "9988776655",
     image: "init/images/bookshop.png",
     verified: true,
-    tags: ["school", "college"]
+    tags: ["school", "college"],
+    owner: "6870b24612c47ddfa98a0fa5"
   },
   // 🟣 Remaining Bookstore Listings (9)
 
@@ -345,7 +370,8 @@ const sampleListings = [
   contact: "9067891234",
   image: "init/images/bookshop.png",
   verified: true,
-  tags: ["fiction", "non-fiction", "bestsellers"]
+  tags: ["fiction", "non-fiction", "bestsellers"],
+  owner: "6870b24612c47ddfa98a0fa5"
 },
 {
   title: "Chapter One Bookstore",
@@ -358,7 +384,8 @@ const sampleListings = [
   contact: "9875612340",
   image: "init/images/bookshop.png",
   verified: true,
-  tags: ["cafe", "reading", "students"]
+  tags: ["cafe", "reading", "students"],
+  owner: "6870b24612c47ddfa98a0fa5"
 },
 {
   title: "Books & Beans",
@@ -371,7 +398,8 @@ const sampleListings = [
   contact: "9765412398",
   image: "init/images/bookshop.png",
   verified: true,
-  tags: ["novels", "stationery", "coffee"]
+  tags: ["novels", "stationery", "coffee"],
+  owner: "6870b24612c47ddfa98a0fa5"
 },
 {
   title: "The Reading Room",
@@ -384,7 +412,8 @@ const sampleListings = [
   contact: "9867543120",
   image: "init/images/bookshop.png",
   verified: true,
-  tags: ["poetry", "literature", "authors"]
+  tags: ["poetry", "literature", "authors"],
+  owner: "6870b24612c47ddfa98a0fa5"
 },
 {
   title: "Knowledge Point",
@@ -397,7 +426,8 @@ const sampleListings = [
   contact: "9978632145",
   image: "init/images/bookshop.png",
   verified: true,
-  tags: ["academic", "CBSE", "competitive"]
+  tags: ["academic", "CBSE", "competitive"],
+  owner: "6870b24612c47ddfa98a0fa5"
 },
 {
   title: "Infinity Books",
@@ -410,7 +440,8 @@ const sampleListings = [
   contact: "9045312678",
   image: "init/images/bookshop.png",
   verified: true,
-  tags: ["foreign authors", "graphic novels", "bestsellers"]
+  tags: ["foreign authors", "graphic novels", "bestsellers"],
+  owner: "6870b24612c47ddfa98a0fa5"
 },
 {
   title: "The Scholar's Stop",
@@ -423,7 +454,8 @@ const sampleListings = [
   contact: "9945612032",
   image: "init/images/bookshop.png",
   verified: true,
-  tags: ["textbooks", "reference", "stationery"]
+  tags: ["textbooks", "reference", "stationery"],
+  owner: "6870b24612c47ddfa98a0fa5"
 },
 {
   title: "Pages & Chapters",
@@ -436,7 +468,8 @@ const sampleListings = [
   contact: "9002134567",
   image: "C:\\Users\\gargv\\OneDrive\\Pictures\\myphoto\\IMG_20250510_161001634_HDR~2.jpg",
   verified: true,
-  tags: ["novels", "self-help", "biography"]
+  tags: ["novels", "self-help", "biography"],
+  owner: "6870b24612c47ddfa98a0fa5"
 },
 {
   title: "Book Square",
@@ -449,7 +482,8 @@ const sampleListings = [
   contact: "9845623145",
   image: "init/images/bookshop.png",
   verified: true,
-  tags: ["modern", "new arrivals", "book launch"]
+  tags: ["modern", "new arrivals", "book launch"],
+  owner: "6870b24612c47ddfa98a0fa5"
 }
 
 ];
