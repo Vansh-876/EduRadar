@@ -3,77 +3,121 @@
 <div class="container py-5">
   <h2 class="mb-4 fw-semibold" style="font-family: 'Plus Jakarta Sans', sans-serif;">Add New Listing</h2>
 
-  <form class="needs-validation" novalidate method="POST" action="/listings">
-<!--title-->
-      <div class="mb-3">
-      <label for="name" class="form-label">Business Title</label>
-      <input type="text" class="form-control" id="name" name="listing[title]" placeholder="e.g. The Premiuim Bookstore" required>
+  <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+    
+    <!-- Business Title -->
+    <div class="mb-3">
+      <label class="form-label">Business Title</label>
+      <input type="text" class="form-control" name="listing[title]" required>
       <div class="valid-feedback">Looks good!</div>
       <div class="invalid-feedback">Please enter the business title.</div>
     </div>
+
     <!-- Business Name -->
     <div class="mb-3">
-      <label for="name" class="form-label">Business Name</label>
-      <input type="text" class="form-control" id="name" name="listing[name]" placeholder="e.g. Smart Stationers" required>
+      <label class="form-label">Business Name</label>
+      <input type="text" class="form-control" name="listing[name]" required>
       <div class="valid-feedback">Looks good!</div>
       <div class="invalid-feedback">Please enter the business name.</div>
     </div>
 
     <!-- Location -->
     <div class="mb-3">
-      <label for="location" class="form-label">Location</label>
-      <input type="text" class="form-control" id="location" name="listing[location]" placeholder="e.g. MG Road, Pune" required>
+      <label class="form-label">Location</label>
+      <input type="text" class="form-control" name="listing[location]" required>
       <div class="valid-feedback">Looks good!</div>
       <div class="invalid-feedback">Please provide the location.</div>
     </div>
 
     <!-- Description -->
     <div class="mb-3">
-      <label for="description" class="form-label">Description</label>
-      <textarea class="form-control" id="description" rows="3" name="listing[description]" placeholder="e.g. Best-selling stationery items for students and offices." required></textarea>
+      <label class="form-label">Description</label>
+      <textarea class="form-control" rows="3" name="listing[description]" required></textarea>
       <div class="valid-feedback">Looks great!</div>
       <div class="invalid-feedback">Please write a short description.</div>
     </div>
 
-    <!-- Image + Category -->
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <label for="image" class="form-label">Image URL</label>
-        <input type="text" class="form-control" id="image" name="listing[image]" placeholder="e.g. https://example.com/image.jpg" required>
-        <div class="valid-feedback">Image URL added.</div>
-        <div class="invalid-feedback">Please provide a valid image URL.</div>
-      </div>
+    <!-- Image Upload -->
+    <div class="mb-3">
+      <label class="form-label">Upload Image</label>
+      <input type="file" class="form-control" name="listing[image]" required>
+      <div class="valid-feedback">Image uploaded.</div>
+      <div class="invalid-feedback">Please upload an image.</div>
+    </div>
 
-      <div class="col-md-6 mb-3">
-        <label for="category" class="form-label">Category</label>
-        <input type="text" class="form-control" id="category" name="listing[category]" placeholder="e.g. Stationery" required>
+    <!-- Category & Opening Hours -->
+    
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select class="form-select" name="listing[category]" required>
+          <option value="">Choose...</option>
+          <option>Stationery</option>
+          <option>Bookstore</option>
+          <option>Cyber Cafe</option>
+          <option>Library</option>
+          <option>Coaching Centre</option>
+        </select>
         <div class="valid-feedback">Category selected.</div>
-        <div class="invalid-feedback">Category is required.</div>
+        <div class="invalid-feedback">Please select a category.</div>
       </div>
-    </div>
 
-    <!-- Rating
-    <div class="mb-3">
-      <label for="rating" class="form-label">Rating</label>
-      <input type="number" step="0.1" min="1" max="5" class="form-control" id="rating" name="listing[rating]" placeholder="e.g. 4.5" required>
-      <div class="valid-feedback">Thank you for rating.</div>
-      <div class="invalid-feedback">Please provide a rating between 1 and 5.</div>
-    </div> -->
-
-    <!-- Opening Hours -->
-    <div class="mb-3">
-      <label for="hours" class="form-label">Opening Hours</label>
-      <input type="text" class="form-control" id="hours" name="listing[openHours]" placeholder="e.g. 9 AM - 8 PM" required>
-      <div class="valid-feedback">Good hours!</div>
-      <div class="invalid-feedback">Please mention the opening hours.</div>
-    </div>
+      <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Opening Hours</label>
+        <input type="text" class="form-control" name="listing[openHours]" required>
+        <div class="valid-feedback">Good hours!</div>
+        <div class="invalid-feedback">Please mention the opening hours.</div>
+      </div>
+    
 
     <!-- Contact -->
-    <div class="mb-3">
-      <label for="contact" class="form-label">Contact</label>
-      <input type="tel" class="form-control" id="contact" name="listing[contact]" placeholder="e.g. 9988776655" required>
+    <div class=" col-md-6 mb-3">
+      <label class="form-label">Contact</label>
+      <input type="tel" class="form-control" name="listing[contact]" required>
       <div class="valid-feedback">Contact looks fine.</div>
       <div class="invalid-feedback">Please provide a contact number.</div>
+    </div>
+    </div>
+
+      <div class="row">
+    <!-- WhatsApp Number -->
+    <div class=" col-md-6 mb-3">
+      <label class="form-label">WhatsApp Number (Optional)</label>
+      <input type="tel" class="form-control" name="listing[whatsappNumber]">
+    </div>
+
+    <!-- Email -->
+    <div class=" col-md-6 mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" name="listing[email]" required>
+      <div class="invalid-feedback">Please enter a valid email address.</div>
+    </div>
+    </div>
+
+    <!-- Website -->
+    <div class="mb-3">
+      <label class="form-label">Website (Optional)</label>
+      <input type="url" class="form-control" name="listing[website]">
+    </div>
+
+    <!-- Google Map Link -->
+    <div class="mb-3">
+      <label class="form-label">Google Map Link (Optional)</label>
+      <input type="url" class="form-control" name="listing[googleMapLink]">
+    </div>
+
+    <div class="row">
+    <!-- Facebook Page -->
+    <div class=" col-md-6 mb-3">
+      <label class="form-label">Facebook Page (Optional)</label>
+      <input type="url" class="form-control" name="listing[facebookPage]">
+    </div>
+
+    <!-- Instagram Page -->
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Instagram Page (Optional)</label>
+      <input type="url" class="form-control" name="listing[instagramPage]">
+    </div>
     </div>
 
     <button type="submit" class="btn btn-success px-4">Submit</button>

@@ -1,20 +1,20 @@
 <% layout("/layouts/boilerplate") %>
 
-<body>
-<div class="container mt-5">
+ <div class="container-fluid">
   <h2 class="mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">All Listings</h2>
 
   <!-- ✅ Responsive grid row outside the loop -->
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-30">
+  <div class="row  row-cols-sm-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-5">
     <% allListings.forEach(listing => { %>
       <div class="col"> <!-- ✅ Only one column inside loop -->
-        <div class="card shadow-sm border-0 h-100" style="border-radius: 16px; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden;">
-          
-          <!-- Image with fallback -->
-          <div style="height: 240px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #ddd;">
-            <img src="<%= listing.image %>" alt="Listing Image" style="width: 100%; height: 100%; object-fit: cover;"
-              onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color: #888;\'>Image not available</span>';">
-          </div>
+          <div style="height: 240px; background-color: #f0f0f0; height:20rem;display: flex; border-radius: 1rem; align-items: center; justify-content: center; border-bottom: 1px solid #ddd;">
+        <% if (listing.image && listing.image.url) { %>
+          <img src="<%= listing.image.url %>" alt="Listing Image" style="width: 100%; height: 100%; object-fit: cover;"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color: #888; \'>Image not available</span>';">
+        <% } else { %>
+          <div class="fallback-text text-muted text-center">📦<br>No image available</div>
+        <% } %>
+      </div>
 
           <div class="card-body py-3 px-3">
             <h6 class="fw-semibold mb-1"><%= listing.name %></h6>
@@ -27,9 +27,7 @@
             </div>
           </div>
 
-        </div>
       </div>
     <% }) %>
   </div>
 </div>
-</body>

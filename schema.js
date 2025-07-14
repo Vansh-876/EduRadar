@@ -14,16 +14,7 @@ const listingSchema = Joi.object({
       'string.empty': 'Location is required',
     }),
 
-    category: Joi.string()
-    .custom((value, helpers) => {
-    const allowed = ['Library', 'Bookstore', 'Stationery', 'Other'];
-    const fixed = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-    if (!allowed.includes(fixed)) {
-      return helpers.error('any.only');
-    }
-    return fixed;
-  })
-  .required()
+    category: Joi.string().required()
   .messages({
     'any.only': 'Category must be one of Library, Bookstore, Stationery or Other'
   }),
@@ -37,11 +28,34 @@ const listingSchema = Joi.object({
     contact: Joi.string().pattern(/^[0-9]{10}$/).optional().messages({
       'string.pattern.base': 'Phone number must be 10 digits'
     }),
-    // rating: Joi.number().min(0).max(5).required().messages({
-    //   'number.base': 'Rating must be a number',
-    //   'number.min': 'Rating must be between 0 and 5',
-    //   'number.max': 'Rating must be between 0 and 5'
-    // }),
+      alternateContact: Joi.string().pattern(/^[0-9]{10}$/).allow('', null).messages({
+      'string.pattern.base': 'Alternate contact must be a valid 10-digit number',
+    }),
+
+    whatsappNumber: Joi.string().pattern(/^[0-9]{10}$/).allow('', null).messages({
+      'string.pattern.base': 'WhatsApp number must be a valid 10-digit number',
+    }),
+
+    email: Joi.string().email().required().messages({
+      'string.email': 'Email must be valid',
+      'string.empty': 'Email is required'
+    }),
+
+    website: Joi.string().uri().allow('', null).messages({
+      'string.uri': 'Website must be a valid URL',
+    }),
+
+    googleMapLink: Joi.string().uri().allow('', null).messages({
+      'string.uri': 'Google Map link must be a valid URL',
+    }),
+
+    facebookPage: Joi.string().uri().allow('', null).messages({
+      'string.uri': 'Facebook page must be a valid URL',
+    }),
+
+    instagramPage: Joi.string().uri().allow('', null).messages({
+      'string.uri': 'Instagram page must be a valid URL',
+    }),
     image: Joi.string().allow('', null), // Optional
   }).required()
 });

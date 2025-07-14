@@ -1,3 +1,8 @@
+if(process.env.NODE_ENV != "production") {
+require("dotenv").config();
+}
+
+console.log(process.env.SECRET);
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -33,24 +38,10 @@ app.use((req, res, next) => {
 });
 
 
-async function seedDB() {
-  try {
-    await Listing.deleteMany({});
-    console.log("Old listings deleted 🗑️");
-    await Listing.insertMany(sampleListings);
-    console.log("Seeding completed ✅");
-  } catch (err) {
-    console.error("Seeding failed ❌", err);
-  }
-}
-
 async function main() {
   try {
     await mongoose.connect(MONGO_URL);
     console.log("connected to db ✅");
-
-    // Seed the database
-    await seedDB();
 
     // Start server only after DB is connected and seeded
     app.listen(8080, () => {
