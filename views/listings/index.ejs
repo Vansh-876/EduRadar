@@ -1,15 +1,63 @@
 <% layout("/layouts/boilerplate") %>
+<style>
+  #filters {
+margin-top: 2rem;
+display: flex;
+text-decoration: none !important;
+  }
 
- <div class="container-fluid">
-  <h2 class="mb-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">All Listings</h2>
+  .filter {
+    margin-right: 3rem !important;
+    text-align: center;
+    opacity: 0.7 !important;
+    color: black !important;
+    text-decoration: none !important;
+  }
+  .filter p {
+    font-size: 0.8rem;
+  }
 
-  <!-- ✅ Responsive grid row outside the loop -->
-  <div class="row  row-cols-sm-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-5">
+  .filter:hover {
+    opacity: 1 !important;
+    cursor: pointer;
+  }
+
+</style>
+
+<div id="filters">
+  <a href="/listings" class="filter">
+    <div><i class="fa-solid fa-globe"></i></div>
+    <p>All</p>
+  </a>
+  <a href="/listings?category=Coaching" class="filter">
+    <div><i class="fa-solid fa-chalkboard-user"></i></div>
+    <p>Coaching</p>
+  </a>
+  <a href="/listings?category=Cyber Cafe" class="filter">
+    <div><i class="fa-solid fa-computer"></i></div>
+    <p>Cyber Cafe</p>
+  </a>
+  <a href="/listings?category=Library" class="filter">
+    <div><i class="fa-solid fa-book-open"></i></div>
+    <p>Library</p>
+  </a>
+  <a href="/listings?category=Stationery" class="filter">
+    <div><i class="fa-solid fa-pencil-ruler"></i></div>
+    <p>Stationery</p>
+  </a>
+  <a href="/listings?category=Bookstore" class="filter">
+    <div><i class="fa-solid fa-book"></i></div>
+    <p>Bookstore</p>
+  </a>
+</div>
+
+
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
     <% allListings.forEach(listing => { %>
       <div class="col"> <!-- ✅ Only one column inside loop -->
           <div style="height: 240px; background-color: #f0f0f0; height:20rem;display: flex; border-radius: 1rem; align-items: center; justify-content: center; border-bottom: 1px solid #ddd;">
         <% if (listing.image && listing.image.url) { %>
-          <img src="<%= listing.image.url %>" alt="Listing Image" style="width: 100%; height: 100%; object-fit: cover;"
+          <img src="<%= listing.image.url %>" alt="Listing Image" style="width: 100%; height: 100%; object-fit: cover;border-radius: 1rem;"
             onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color: #888; \'>Image not available</span>';">
         <% } else { %>
           <div class="fallback-text text-muted text-center">📦<br>No image available</div>
@@ -23,7 +71,13 @@
 
             <div class="d-flex justify-content-between align-items-center">
               <span class="badge bg-success"><%= listing.rating %> ★</span>
+
+              <% if (currentUser) { %>
               <a href="/listings/<%= listing._id %>" class="btn btn-sm btn-outline-primary">View Details</a>
+              <% } else { %>
+                <a href="/login" class="btn btn-sm btn-outline-primary">View Details</a>
+                <% } %>
+
             </div>
           </div>
 

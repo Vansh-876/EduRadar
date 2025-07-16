@@ -15,6 +15,7 @@ const listingSchema = new Schema({
   googleMapLink: String,
   facebookPage: String,
   instagramPage: String,
+  tags: [String],
   image: {
     url: String,
     filename: String,

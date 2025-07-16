@@ -57,10 +57,9 @@
           </form>
         </div>
       <% } %>
-      <hr>
 
       <!-- Review Form -->
-      <% if (currentUser) { %>
+             <hr>
         <h4>Leave a Review</h4>
         <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
           <div class="mb-3 mt-3">
@@ -86,13 +85,12 @@
             <div class="valid-feedback">Looks good!</div>
             <div class="invalid-feedback">Please enter a comment.</div>
           </div>
-
-          <button class="btn btn-success mt-2">Submit Review</button>
+          
+  <button type="submit" class="btn btn-success mt-2">Submit Review</button>
+ 
         </form>
-        <hr>
-      <% } %>
-
-      <!-- Reviews Section -->
+        <hr/>
+     <% if(listing.reviews.length>0)  { %>
       <h5><strong>All Reviews</strong></h5>
       <% for (let review of listing.reviews) { %>
         <div class="card mb-3 mt-3">
@@ -100,14 +98,13 @@
             <h5 class="card-title">@<%= review.author.username %></h5>
             <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
             <p class="card-text"><%= review.comment %></p>
-            <% if (currentUser && currentUser._id.toString() === review.author._id.toString()) { %>
               <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
                 <button class="btn btn-sm btn-dark">Delete</button>
               </form>
-            <% } %>
           </div>
         </div>
       <% } %>
+<% } %>
 
     </div>
   </div>

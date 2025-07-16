@@ -1,0 +1,108 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  .hero-section {
+    background: linear-gradient(to right, #2c0859, #13032e);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .category-box {
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  .category-box h5 {
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .category-box .circle-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #eee;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 8px;
+  }
+
+  .search-form input {
+    max-width: 500px;
+    margin: auto;
+  }
+
+</style>
+
+<div class="hero-section">
+  <h1 class="fw-bold">Fast, Free way to find services</h1>
+  <p class="lead">Discover Nearby Bookstores, Libraries, Coaching & More</p>
+
+  <form action="/listings" method="GET" class="row justify-content-center search-form mt-4">
+    <div class="col-md-3">
+      <input type="text" name="location" class="form-control" placeholder="Enter location (e.g. Delhi)">
+    </div>
+    <div class="col-md-4">
+      <input type="text" name="search" class="form-control" placeholder="Search for a service...">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-warning w-100">Search</button>
+    </div>
+  </form>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="category-box">
+        <h5>Bookstore</h5>
+        <div class="circle-icon">📚</div>
+        <div class="circle-icon">📖</div>
+        <p><a href="/listings?category=Bookstore">View all</a></p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="category-box">
+        <h5>Library</h5>
+        <div class="circle-icon">🏫</div>
+        <div class="circle-icon">📘</div>
+        <p><a href="/listings?category=Library">View all</a></p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="category-box">
+        <h5>Coaching</h5>
+        <div class="circle-icon">🎓</div>
+        <div class="circle-icon">📐</div>
+        <p><a href="/listings?category=Coaching">View all</a></p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="category-box">
+        <h5>Stationery</h5>
+        <div class="circle-icon">✏️</div>
+        <div class="circle-icon">🖊️</div>
+        <p><a href="/listings?category=Stationery">View all</a></p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="category-box">
+        <h5>Cyber Cafe</h5>
+        <div class="circle-icon">💻</div>
+        <div class="circle-icon">🖥️</div>
+        <p><a href="/listings?category=Cyber Cafe">View all</a></p>
+      </div>
+    </div>
+  </div>
+</div>

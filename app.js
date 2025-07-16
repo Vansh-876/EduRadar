@@ -21,6 +21,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const homeController = require('./controllers/home.js');
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/eduradar";
 
@@ -93,12 +94,14 @@ app.use((req, res, next) => {
 });
 
 
-// ✅ THEN define your routes
-app.get("/", (req, res) => {
-  res.render("home", { activePage: "home" });
+app.use((req, res, next) => {
+  res.locals.search = req.query.search || "";
+  res.locals.location = req.query.location || "";
+  next();
 });
 
-app.use("/listings", listingsRoutes);
+app.get('/', homeController.homepage);
+app.use("/", listingsRoutes);
 app.use("/listings/:id/reviews", reviewsRoutes);
 app.use("/", UserRoutes);
 

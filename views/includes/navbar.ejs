@@ -1,5 +1,31 @@
+<style>
+.btn-search {
+  background-color:#2A73E8 ;
+  color: #fff;
+  border-radius: 25px;
+  padding: 0 1rem 0 1rem;
+}
+
+.btn-search:hover {
+  background-color:#2A73E8 ;
+  color: #fff;
+}
+
+.btn-search i {
+  display: inline !important;
+  margin-right: 0.5rem;
+}
+
+.search-input {
+  border-radius: 25px;
+  padding: 0.5rem 3rem 0.5rem 3rem;
+  font-size: 0.8rem;
+}
+
+</style>
 <nav class="navbar navbar-expand-md border-bottom sticky-top">
   <div class="container-fluid">
+    <div class="logo">
     <a class="navbar-brand fw-bold" href="/">
       <i class="bi bi-mortarboard"></i>EduRadar
     </a>
@@ -8,28 +34,33 @@
       aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    </div>
 
-    <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+    <div class="collapse navbar-collapse " id="navbarNav">
       <div class="navbar-nav">
-        <a class="nav-link <% if(activePage === 'home'){ %>active<% } %>" href="/">
-          <i class="bi bi-house-door"></i>Home
-        </a>
+         <a class="nav-link" href="/">Home</a>
         <a class="nav-link <% if(activePage === 'listings'){ %>active<% } %>" href="/listings">
-          <i class="bi bi-card-list"></i>All Listings
-        </a>
-        <a class="nav-link <% if(activePage === 'create'){ %>active<% } %>" href="/listings/new">
-          <i class="bi bi-plus-circle"></i>New Listing
+          <i class="bi bi-card-list"></i>Explore
         </a>
       </div>
+    <div class="navbar-nav ms-auto">
+      <form action="/listings" method="GET" class="d-flex justify-content-center my-3">
+      <input type="search" name="search" placeholder="Search" class="form-control w-50 me-2 search-input" value="<%= search %>">
+      <input type="search" name="location" placeholder="Location" class="form-control w-50 me-2 search-input" value="<%= location %>">
+      <button type="submit" class="btn btn-search"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+     </form>
     </div>
 
     <div class="navbar-nav ms-auto">
+              <a class="nav-link <% if(activePage === 'create'){ %>active<% } %>" href="/listings/new">
+          <i class="bi bi-plus-circle"></i>New Listing
+        </a>
       <% if (!currentUser ) { %>
-        <a class="nav-link" href="/register">Sign Up</a>
-        <a class="nav-link" href="/login">Log In</a>
+        <a class="nav-link" href="/register"><B>Sign Up</B></a>
+        <a class="nav-link" href="/login"><b>Log In</b></a>
       <% } %>
       <% if (currentUser) { %>
-        <a class="nav-link" href="/logout">Log Out</a>
+        <a class="nav-link" href="/logout"><b>Log Out</b></a>
         <a class="nav-link" href="/profile">
           <i class="bi bi-person-circle"></i>Profile
         </a>

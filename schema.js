@@ -14,9 +14,10 @@ const listingSchema = Joi.object({
       'string.empty': 'Location is required',
     }),
 
-    category: Joi.string().required()
+ category: Joi.string().valid('Bookstore', 'Library', 'Stationery', 'Cyber Cafe', 'Coaching').required()
   .messages({
-    'any.only': 'Category must be one of Library, Bookstore, Stationery or Other'
+    'any.only': 'Category must be one of Bookstore, Library, Stationery, Cyber Cafe, or Coaching',
+    'string.empty': 'Category is required'
   }),
 
     openHours: Joi.string().required().messages({
@@ -56,7 +57,11 @@ const listingSchema = Joi.object({
     instagramPage: Joi.string().uri().allow('', null).messages({
       'string.uri': 'Instagram page must be a valid URL',
     }),
-    image: Joi.string().allow('', null), // Optional
+    image: Joi.string().allow('', null),
+      tags: Joi.alternatives().try(
+      Joi.array().items(Joi.string()),
+      Joi.string()  
+    ).optional()
   }).required()
 });
 

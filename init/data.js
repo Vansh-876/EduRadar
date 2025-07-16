@@ -13,7 +13,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/elitebookhouse",
   facebookPage: "https://facebook.com/elitebookhouse",
   instagramPage: "https://instagram.com/elitebookhouse",
-  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore1" }
+  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore1" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Peaceful Pages Library",
@@ -29,7 +30,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/peacefulpages",
   facebookPage: "https://facebook.com/peacefulpages",
   instagramPage: "https://instagram.com/peacefulpages",
-  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library1" }
+  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library1" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Creative Supplies",
@@ -45,7 +47,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/creativesupplies",
   facebookPage: "https://facebook.com/creativesupplies",
   instagramPage: "https://instagram.com/creativesupplies",
-  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery1" }
+  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery1" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Web Zone",
@@ -61,7 +64,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/webzone",
   facebookPage: "https://facebook.com/webzone",
   instagramPage: "https://instagram.com/webzone",
-  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber1" }
+  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber1" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Excel Coaching",
@@ -77,7 +81,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/excelcoaching",
   facebookPage: "https://facebook.com/excelcoaching",
   instagramPage: "https://instagram.com/excelcoaching",
-  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching1" }
+  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching1" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 // ... Repeat this pattern for remaining 30 listings ...
 
@@ -95,7 +100,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/bookneststore",
   facebookPage: "https://facebook.com/bookneststore",
   instagramPage: "https://instagram.com/bookneststore",
-  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore12" }
+  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore12" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "The Knowledge Room",
@@ -111,7 +117,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/knowledgeroom",
   facebookPage: "https://facebook.com/knowledgeroom",
   instagramPage: "https://instagram.com/knowledgeroom",
-  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library45" }
+  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library45" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Note & Write",
@@ -127,7 +134,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/notewrite",
   facebookPage: "https://facebook.com/notewrite",
   instagramPage: "https://instagram.com/notewrite",
-  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery22" }
+  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery22" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Speed Net Cafe",
@@ -143,7 +151,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/speednetcafe",
   facebookPage: "https://facebook.com/speednetcafe",
   instagramPage: "https://instagram.com/speednetcafe",
-  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber55" }
+  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber55" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Prime Success Tutorials",
@@ -159,7 +168,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/primesuccess",
   facebookPage: "https://facebook.com/primesuccess",
   instagramPage: "https://instagram.com/primesuccess",
-  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching78" }
+  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching78" },
+    owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Readers' Stop",
@@ -175,7 +185,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/readersstop",
   facebookPage: "https://facebook.com/readersstop",
   instagramPage: "https://instagram.com/readersstop",
-  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore27" }
+  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore27" },
+   owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Brainwave Library",
@@ -191,7 +202,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/brainwavelibrary",
   facebookPage: "https://facebook.com/brainwavelibrary",
   instagramPage: "https://instagram.com/brainwavelibrary",
-  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library32" }
+  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library32" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Office Mart",
@@ -207,7 +219,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/officemart",
   facebookPage: "https://facebook.com/officemart",
   instagramPage: "https://instagram.com/officemart",
-  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery76" }
+  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery76" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Net Connect",
@@ -223,7 +236,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/netconnect",
   facebookPage: "https://facebook.com/netconnect",
   instagramPage: "https://instagram.com/netconnect",
-  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber12" }
+  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber12" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Vision Tutorials",
@@ -239,7 +253,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/visionsuccess",
   facebookPage: "https://facebook.com/visionsuccess",
   instagramPage: "https://instagram.com/visionsuccess",
-  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching98" }
+  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching98" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Book Cart",
@@ -255,7 +270,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/bookcart",
   facebookPage: "https://facebook.com/bookcart",
   instagramPage: "https://instagram.com/bookcart",
-  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore66" }
+  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore66" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Page Turners Library",
@@ -271,7 +287,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/pageturnerslibrary",
   facebookPage: "https://facebook.com/pageturnerslibrary",
   instagramPage: "https://instagram.com/pageturnerslibrary",
-  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library88" }
+  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library88" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Write Right",
@@ -287,7 +304,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/writeright",
   facebookPage: "https://facebook.com/writeright",
   instagramPage: "https://instagram.com/writeright",
-  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery44" }
+  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery44" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "iWeb Cafe",
@@ -303,7 +321,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/iwebcafe",
   facebookPage: "https://facebook.com/iwebcafe",
   instagramPage: "https://instagram.com/iwebcafe",
-  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber67" }
+  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber67" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Target Tutorials",
@@ -319,7 +338,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/targettutorials",
   facebookPage: "https://facebook.com/targettutorials",
   instagramPage: "https://instagram.com/targettutorials",
-  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching59" }
+  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching59" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Book Junction",
@@ -335,7 +355,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/bookjunction",
   facebookPage: "https://facebook.com/bookjunction",
   instagramPage: "https://instagram.com/bookjunction",
-  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore29" }
+  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore29" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Study Lounge",
@@ -351,7 +372,9 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/studylounge",
   facebookPage: "https://facebook.com/studylounge",
   instagramPage: "https://instagram.com/studylounge",
-  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library90" }
+  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library90" },
+  owner: "6870b24612c47ddfa98a0fa5",
+  tags: ["wifi available", "group study", "peaceful", "verified"]
 },
 {
   title: "Paper Palace",
@@ -367,7 +390,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/paperpalace",
   facebookPage: "https://facebook.com/paperpalace",
   instagramPage: "https://instagram.com/paperpalace",
-  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery54" }
+  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery54" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Cyber World",
@@ -383,7 +407,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/cyberworldcafe",
   facebookPage: "https://facebook.com/cyberworldcafe",
   instagramPage: "https://instagram.com/cyberworldcafe",
-  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber81" }
+  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber81" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Achievers Academy",
@@ -399,7 +424,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/achieversacademy",
   facebookPage: "https://facebook.com/achieversacademy",
   instagramPage: "https://instagram.com/achieversacademy",
-  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching42" }
+  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching42" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Page World",
@@ -415,7 +441,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/pageworld",
   facebookPage: "https://facebook.com/pageworld",
   instagramPage: "https://instagram.com/pageworld",
-  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore71" }
+  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore71" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Smart Reads",
@@ -431,7 +458,9 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/smartreads",
   facebookPage: "https://facebook.com/smartreads",
   instagramPage: "https://instagram.com/smartreads",
-  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library65" }
+  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library65" },
+  owner: "6870b24612c47ddfa98a0fa5",
+  tags: ["wifi available", "group study", "peaceful", "verified"]
 },
 {
   title: "The Stationery Hub",
@@ -447,7 +476,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/stationeryhub",
   facebookPage: "https://facebook.com/stationeryhub",
   instagramPage: "https://instagram.com/stationeryhub",
-  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery33" }
+  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery33" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Fast Lane Cafe",
@@ -463,7 +493,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/fastlanecafe",
   facebookPage: "https://facebook.com/fastlanecafe",
   instagramPage: "https://instagram.com/fastlanecafe",
-  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber32" }
+  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber32" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Champions Institute",
@@ -479,7 +510,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/championsinstitute",
   facebookPage: "https://facebook.com/championsinstitute",
   instagramPage: "https://instagram.com/championsinstitute",
-  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching73" }
+  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching73" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "The Book Shelf",
@@ -495,7 +527,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/thebookshelf",
   facebookPage: "https://facebook.com/thebookshelf",
   instagramPage: "https://instagram.com/thebookshelf",
-  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore98" }
+  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore98" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Library Hub",
@@ -511,7 +544,9 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/libraryhub",
   facebookPage: "https://facebook.com/libraryhub",
   instagramPage: "https://instagram.com/libraryhub",
-  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library77" }
+  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library77" },
+  owner: "6870b24612c47ddfa98a0fa5",
+  tags: ["wifi available", "group study", "peaceful", "verified"]
 },
 {
   title: "Office Point",
@@ -527,7 +562,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/officepoint",
   facebookPage: "https://facebook.com/officepoint",
   instagramPage: "https://instagram.com/officepoint",
-  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery50" }
+  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery50" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "iConnect Cafe",
@@ -543,7 +579,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/iconnectcafe",
   facebookPage: "https://facebook.com/iconnectcafe",
   instagramPage: "https://instagram.com/iconnectcafe",
-  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber58" }
+  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber58" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Bright Future Tutorials",
@@ -559,7 +596,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/brightfuturetutorials",
   facebookPage: "https://facebook.com/brightfuturetutorials",
   instagramPage: "https://instagram.com/brightfuturetutorials",
-  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching80" }
+  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching80" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Book Corner",
@@ -575,7 +613,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/bookcorner",
   facebookPage: "https://facebook.com/bookcorner",
   instagramPage: "https://instagram.com/bookcorner",
-  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore58" }
+  image: { url: "https://source.unsplash.com/800x600/?bookstore", filename: "bookstore58" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Peace Library",
@@ -591,7 +630,9 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/peacelibrary",
   facebookPage: "https://facebook.com/peacelibrary",
   instagramPage: "https://instagram.com/peacelibrary",
-  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library40" }
+  image: { url: "https://source.unsplash.com/800x600/?library", filename: "library40" },
+    owner: "6870b24612c47ddfa98a0fa5",
+    tags: ["wifi available", "group study", "peaceful", "verified"]
 },
 {
   title: "Pen & Paper",
@@ -607,7 +648,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/penandpaper",
   facebookPage: "https://facebook.com/penandpaper",
   instagramPage: "https://instagram.com/penandpaper",
-  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery78" }
+  image: { url: "https://source.unsplash.com/800x600/?stationery", filename: "stationery78" },
+    owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Click Net Cafe",
@@ -623,7 +665,8 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/clicknetcafe",
   facebookPage: "https://facebook.com/clicknetcafe",
   instagramPage: "https://instagram.com/clicknetcafe",
-  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber70" }
+  image: { url: "https://source.unsplash.com/800x600/?cybercafe", filename: "cyber70" },
+  owner: "6870b24612c47ddfa98a0fa5",
 },
 {
   title: "Success Gurukul",
@@ -639,8 +682,10 @@ const sampleListings = [
   googleMapLink: "https://maps.google.com/successgurukul",
   facebookPage: "https://facebook.com/successgurukul",
   instagramPage: "https://instagram.com/successgurukul",
-  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching66" }
-},
+  image: { url: "https://source.unsplash.com/800x600/?coaching", filename: "coaching66" },
+  owner: "6870b24612c47ddfa98a0fa5",
+}
+
 ];
  
 module.exports = sampleListings ;
