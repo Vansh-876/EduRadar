@@ -11,7 +11,8 @@ const userSchema = new schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    profileImage: { type: String, default: '/images/default-profile.jpg' }
 });
 
 userSchema.plugin(passportLocalMongoose, {

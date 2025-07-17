@@ -43,8 +43,9 @@
           <i class="bi bi-card-list"></i>Explore
         </a>
       </div>
+
     <div class="navbar-nav ms-auto">
-      <form action="/listings" method="GET" class="d-flex justify-content-center my-3">
+      <form id="navbarSearch" action="/listings" method="GET" style="display: none;">
       <input type="search" name="search" placeholder="Search" class="form-control w-50 me-2 search-input" value="<%= search %>">
       <input type="search" name="location" placeholder="Location" class="form-control w-50 me-2 search-input" value="<%= location %>">
       <button type="submit" class="btn btn-search"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
@@ -59,12 +60,18 @@
         <a class="nav-link" href="/register"><B>Sign Up</B></a>
         <a class="nav-link" href="/login"><b>Log In</b></a>
       <% } %>
-      <% if (currentUser) { %>
-        <a class="nav-link" href="/logout"><b>Log Out</b></a>
-        <a class="nav-link" href="/profile">
-          <i class="bi bi-person-circle"></i>Profile
-        </a>
-      <% } %>
+<% if (currentUser) { %>
+ <div class="dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-person-circle"></i> Profile
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+    <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+  </ul>
+</div>
+<% } %>
     </div>
+  </div>
   </div>
 </nav>

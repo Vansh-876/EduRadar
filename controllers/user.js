@@ -42,4 +42,15 @@ module.exports.Logout= async(req, res) => {
     req.flash("success", "Logged out successfully!");
     res.redirect("/listings");
   });
+
+  module.exports.renderProfileSettingsForm = (req, res) => {
+  res.render('users/settings', { user: req.user });
+};
+
+module.exports.updateProfile = async (req, res) => {
+  const { username, email } = req.body;
+  const user = await User.findByIdAndUpdate(req.user._id, { username, email }, { new: true });
+  req.flash('success', 'Profile updated successfully!');
+  res.redirect('/profile/settings');
+};
 };

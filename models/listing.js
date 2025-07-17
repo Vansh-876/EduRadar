@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Review = require("./review.js");
+const { required } = require("joi");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
@@ -9,6 +10,7 @@ const listingSchema = new Schema({
   description: { type: String, required: true },
   location: { type: String, required: true },
   contact: { type: String, required: true },
+  openHours: {type: String,  required: true }, 
   whatsappNumber: { type: String, required: true },
   email: { type: String, required: true },
   website: String,

@@ -4,19 +4,27 @@ body {
 
 /* Better spacing and font */
 .navbar {
-  background-color: #F9FAFB ;
-  border-bottom: 1.5px solid #dee2e6;
+  background: linear-gradient(to right,#2A73E8, #2c0859); 
   padding: 0.7rem 1.5rem;
   height: 5rem;
+  border-bottom: none !important;
 }
 
 .navbar-brand {
   margin-left: 50px;
   font-size: 1.8rem !important;
-  color: #2A73E8 !important;  /* A green shade */
+  color: white!important;  /* A green shade */
   display: flex;
   font-weight: 400 !important;
   align-items: center;
+}
+
+#navbarSearch {
+  transition: all 0.3s ease;
+}
+
+#heroSearch {
+  transition: all 0.3s ease;
 }
 
 .navbar-brand i {
@@ -25,7 +33,7 @@ body {
 }
 
 .nav-link {
-  color:#1F2937 !important; /* Dark gray */
+  color:white !important; /* Dark gray */
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -37,16 +45,20 @@ body {
 }
 
 .nav-link:hover {
-  color: #1d6f42 !important;  /* Green hover */
+  color: yellow !important;  /* Green hover */
   transition: all 0.2s ease-in-out;
 }
 
 .navbar-nav .active {
-  color: #1d6f42 !important;
+  color: yellow !important;
   font-weight: 600;
   border-bottom: 2px solid #1d6f42;
 }
 
+ .dropdown-menu a:hover {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
 
 /* Footer Styles */
 .wave-footer {

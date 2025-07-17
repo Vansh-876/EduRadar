@@ -14,11 +14,7 @@ const listingSchema = Joi.object({
       'string.empty': 'Location is required',
     }),
 
- category: Joi.string().valid('Bookstore', 'Library', 'Stationery', 'Cyber Cafe', 'Coaching').required()
-  .messages({
-    'any.only': 'Category must be one of Bookstore, Library, Stationery, Cyber Cafe, or Coaching',
-    'string.empty': 'Category is required'
-  }),
+    category: Joi.string().valid('Bookstore', 'Library', 'Stationery', 'Cyber Cafe', 'Coaching').required(),
 
     openHours: Joi.string().required().messages({
       'string.empty': 'Open hours are required',

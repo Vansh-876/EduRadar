@@ -1,37 +1,63 @@
 <% layout("/layouts/boilerplate") %>
 
 <style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+  }
   .hero-section {
-    background: linear-gradient(to right, #2c0859, #13032e);
+    background: linear-gradient(to right, #2A73E8, #2c0859);
     color: white;
-    padding: 60px 0;
+    padding: 120px 0; /* Increased padding for height */
     text-align: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .hero-section p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+  }
+  
+  .hero-search-wrapper .form-control {
+    height: 50px;
+  }
+
+  .hero-search-wrapper .btn {
+    height: 50px;
   }
 
   .category-box {
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 20px;
-    margin: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: center;
+    transition: 0.3s;
+    height: 100%;
   }
 
-  .category-box h5 {
-    font-weight: 600;
-    margin-bottom: 15px;
+  .category-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   }
 
-  .category-box .circle-icon {
+  .circle-icon {
     width: 60px;
     height: 60px;
-    background-color: #eee;
+    background-color: #f5f5f5;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    margin: 8px;
+    font-size: 28px;
+    margin-bottom: 10px;
   }
 
   .search-form input {
@@ -39,69 +65,136 @@
     margin: auto;
   }
 
+  .category-section {
+    padding: 60px 0;
+  }
+
+  .category-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .feature-section {
+    background: #f9f9f9;
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .feature-section h2 {
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .feature-box {
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+  }
+
+  .feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .testimonial-section {
+    padding: 60px 0;
+    background: linear-gradient(to right, #2A73E8, #2c0859);
+    color: white;
+    text-align: center;
+  }
+
+  .testimonial-section h2 {
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
 </style>
 
-<div class="hero-section">
-  <h1 class="fw-bold">Fast, Free way to find services</h1>
-  <p class="lead">Discover Nearby Bookstores, Libraries, Coaching & More</p>
-
-  <form action="/listings" method="GET" class="row justify-content-center search-form mt-4">
-    <div class="col-md-3">
-      <input type="text" name="location" class="form-control" placeholder="Enter location (e.g. Delhi)">
-    </div>
-    <div class="col-md-4">
-      <input type="text" name="search" class="form-control" placeholder="Search for a service...">
-    </div>
-    <div class="col-md-2">
-      <button class="btn btn-warning w-100">Search</button>
-    </div>
-  </form>
+<div class="hero-section px-0">
+  <div class="container-fluid hero-search-wrapper px-0">
+    <h1>Discover Services Around You</h1>
+    <p>Find Bookstores, Libraries, Coaching Centers, and More</p>
+    <form id="heroSearch" action="/listings" method="GET" class="row g-2 justify-content-center">
+      <div class="col-md-4">
+        <input type="text" name="location" class="form-control" placeholder="Location (e.g. Delhi)">
+      </div>
+      <div class="col-md-4">
+        <input type="text" name="search" class="form-control" placeholder="Search for a service...">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-warning w-100">Search</button>
+      </div>
+    </form>
+  </div>
 </div>
 
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="category-box">
-        <h5>Bookstore</h5>
-        <div class="circle-icon">📚</div>
-        <div class="circle-icon">📖</div>
-        <p><a href="/listings?category=Bookstore">View all</a></p>
+<div class="container category-section">
+  <h2 class="category-title">Popular Categories</h2>
+  <div class="row g-4">
+    <% const categories = [
+      { name: "Bookstore", icon: "📚" },
+      { name: "Library", icon: "🏫" },
+      { name: "Coaching", icon: "🎓" },
+      { name: "Stationery", icon: "✏️" },
+      { name: "Cyber Cafe", icon: "💻" },
+    ]; %>
+
+    <% categories.forEach(cat => { %>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="category-box">
+          <div class="circle-icon"><%= cat.icon %></div>
+          <h5><%= cat.name %></h5>
+          <a href="/listings?category=<%= cat.name %>" class="btn btn-outline-primary btn-sm mt-2">Explore</a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+
+<div class="feature-section">
+  <div class="container">
+    <h2>Why Choose Us?</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-box">
+          <h5>Verified Listings</h5>
+          <p>All services listed are verified by our team for quality assurance.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-box">
+          <h5>Quick Search</h5>
+          <p>Find the best services near you in just a few clicks.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-box">
+          <h5>Trusted by Thousands</h5>
+          <p>Join thousands of satisfied users across multiple cities.</p>
+        </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="col-md-4">
-      <div class="category-box">
-        <h5>Library</h5>
-        <div class="circle-icon">🏫</div>
-        <div class="circle-icon">📘</div>
-        <p><a href="/listings?category=Library">View all</a></p>
+<div class="testimonial-section">
+  <div class="container">
+    <h2>What Our Users Say</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <p>"Helped me find the best coaching center in my area! Highly recommended."</p>
+        <h6>- Riya Sharma</h6>
       </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="category-box">
-        <h5>Coaching</h5>
-        <div class="circle-icon">🎓</div>
-        <div class="circle-icon">📐</div>
-        <p><a href="/listings?category=Coaching">View all</a></p>
+      <div class="col-md-4">
+        <p>"Very easy to use and quick search results. A lifesaver!"</p>
+        <h6>- Arjun Verma</h6>
       </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="category-box">
-        <h5>Stationery</h5>
-        <div class="circle-icon">✏️</div>
-        <div class="circle-icon">🖊️</div>
-        <p><a href="/listings?category=Stationery">View all</a></p>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="category-box">
-        <h5>Cyber Cafe</h5>
-        <div class="circle-icon">💻</div>
-        <div class="circle-icon">🖥️</div>
-        <p><a href="/listings?category=Cyber Cafe">View all</a></p>
+      <div class="col-md-4">
+        <p>"Loved the experience, found a great bookstore nearby."</p>
+        <h6>- Sneha Kapoor</h6>
       </div>
     </div>
   </div>
