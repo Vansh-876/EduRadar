@@ -1,86 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Listing - <%= listing.title %></title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
+<% layout("/layouts/boilerplate") %>
 
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
+<div class="container py-5">
+  <h2 class="mb-4">✏️ Edit Listing</h2>
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+  <form class="needs-validation" novalidate action="/listings/<%= listing._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
-    input, textarea {
-      padding: 10px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+    <!-- Title -->
+    <div class="mb-3">
+      <label class="form-label">Business Title</label>
+      <input type="text" class="form-control" name="listing[title]" value="<%= listing.title %>" required />
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please provide a title.</div>
+    </div>
 
-    button {
-      padding: 10px;
-      font-size: 1rem;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    <!-- Business Name -->
+    <div class="mb-3">
+      <label class="form-label">Business Name</label>
+      <input type="text" class="form-control" name="listing[name]" value="<%= listing.name %>" required />
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please provide the name.</div>
+    </div>
 
-    button:hover {
-      background-color: #218838;
-    }
+    <!-- Location -->
+    <div class="mb-3">
+      <label class="form-label">Location</label>
+      <input type="text" class="form-control" name="listing[location]" value="<%= listing.location %>" required />
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please provide a location.</div>
+    </div>
 
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      color: #007bff;
-      text-decoration: none;
-    }
+    <!-- Category -->
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <select class="form-select" name="listing[category]" required>
+        <option value="">Choose...</option>
+        <option value="Stationery" <%= listing.category === 'Stationery' ? 'selected' : '' %>>Stationery</option>
+        <option value="Library" <%= listing.category === 'Library' ? 'selected' : '' %>>Library</option>
+        <option value="Cyber Cafe" <%= listing.category === 'CyberCafe' ? 'selected' : '' %>>Cyber Cafe</option>
+        <option value="Bookstore" <%= listing.category === 'Bookstore' ? 'selected' : '' %>>Bookstore</option>
+        <option value="Coaching" <%= listing.category === 'Coaching' ? 'selected' : '' %>>Coaching</option>
+      </select>
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please select a category.</div>
+    </div>
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Edit Listing - <%= listing.title %></h1>
-    
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
-      <input type="text" name="listing[title]" value="<%= listing.title %>" placeholder="Enter Title" required />
-      
-      <input type="text" name="listing[name]" value="<%= listing.name %>" placeholder="Business Name" required />
+    <!-- Description -->
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" name="listing[description]" rows="3" required><%= listing.description %></textarea>
+      <div class="valid-feedback">✅ Looks good!</div>
+      <div class="invalid-feedback">Please enter a short description.</div>
+    </div>
 
-      <input type="text" name="listing[category]" value="<%= listing.category %>" placeholder="Category" required />
+    <div class="mb-3">
+      Original Image <br/>
+      <img src="<%= originalImageUrl %>" />
+    </div>
 
-      <input type="text" name="listing[location]" value="<%= listing.location %>" placeholder="Location" required />
+    <!-- Image -->
+    <div class="mb-3">
+      <label class="form-label">Upload New Image</label>
+      <input type="file" class="form-control" name="listing[image]"  />
+    </div>
 
-      <textarea name="listing[description]" rows="3" placeholder="Description"><%= listing.description %></textarea>
+    <!-- Contact & Open Hours -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Contact</label>
+        <input type="text" class="form-control" name="listing[contact]" value="<%= listing.contact %>" />
+      </div>
 
-      <input type="text" name="listing[rating]" value="<%= listing.rating %>" placeholder="Rating (e.g. 4.5)" />
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Open Hours</label>
+        <input type="text" class="form-control" name="listing[openHours]" value="<%= listing.openHours %>" />
+      </div>
+    </div>
 
-      <input type="text" name="listing[openHours]" value="<%= listing.openHours %>" placeholder="Open Hours" />
+    <!-- Alternate Contact -->
+    <div class="mb-3">
+      <label class="form-label">Alternate Contact</label>
+      <input type="text" class="form-control" name="listing[alternateContact]" value="<%= listing.alternateContact %>" />
+    </div>
 
-      <input type="text" name="listing[contact]" value="<%= listing.contact %>" placeholder="Contact Number" />
+    <!-- WhatsApp -->
+     <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">WhatsApp Number</label>
+      <input type="text" class="form-control" name="listing[whatsappNumber]" value="<%= listing.whatsappNumber %>" />
+    </div>
 
-      <input type="text" name="listing[image]" value="<%= listing.image %>" placeholder="Image URL" />
+    <!-- Email -->
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" name="listing[email]" value="<%= listing.email %>" required />
+      <div class="invalid-feedback">Please enter a valid email address.</div>
+    </div>
+    </div>
 
-      <button type="submit">Update Listing</button>
-    </form>
+    <!-- Website -->
+    <div class="mb-3">
+      <label class="form-label">Website</label>
+      <input type="url" class="form-control" name="listing[website]" value="<%= listing.website %>" />
+    </div>
 
-    <a href="/listings/<%= listing._id %>">← Back to Listing</a>
-  </div>
-</body>
-</html>
+    <!-- Google Map Link -->
+    <div class="mb-3">
+      <label class="form-label">Google Map Link</label>
+      <input type="url" class="form-control" name="listing[googleMapLink]" value="<%= listing.googleMapLink %>" />
+    </div>
+
+    <!-- Facebook -->
+     <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Facebook Page</label>
+      <input type="url" class="form-control" name="listing[facebookPage]" value="<%= listing.facebookPage %>" />
+    </div>
+
+    <!-- Instagram -->
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Instagram Page</label>
+      <input type="url" class="form-control" name="listing[instagramPage]" value="<%= listing.instagramPage %>" />
+    </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mt-3">💾 Save Changes</button>
+
+  </form>
+</div>

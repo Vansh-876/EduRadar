@@ -1,75 +1,135 @@
 <% layout("/layouts/boilerplate") %>
+<body>
+<div class="container py-5">
+  <h2 class="mb-4 fw-semibold" style="font-family: 'Plus Jakarta Sans', sans-serif;">Add New Listing</h2>
 
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card shadow-lg border-0 rounded-4">
-        <div class="card-body p-4">
-          <h2 class="text-center mb-4 fw-bold">Create a New Listing</h2>
-
-          <form action="/listings" method="POST">
-            <!-- Title -->
-            <div class="mb-3">
-              <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control rounded-3" id="title" name="listing[title]" placeholder="e.g. Urban Book Vault" required>
-            </div>
-
-            <!-- Name -->
-            <div class="mb-3">
-              <label for="name" class="form-label">Business Name</label>
-              <input type="text" class="form-control rounded-3" id="name" name="listing[name]" placeholder="e.g. Urban Book Vault" required>
-            </div>
-
-            <!-- Category -->
-            <div class="mb-3">
-              <label for="category" class="form-label">Category</label>
-              <select class="form-select rounded-3" id="category" name="listing[category]" required>
-                <option value="">-- Select Category --</option>
-                <option value="stationery">Stationery</option>
-                <option value="bookstore">Bookstore</option>
-                <option value="library">Library</option>
-                <option value="coaching">Coaching</option>
-                <option value="cyber">Cyber Cafe</option>
-              </select>
-            </div>
-
-            <!-- Location -->
-            <div class="mb-3">
-              <label for="location" class="form-label">Location</label>
-              <input type="text" class="form-control rounded-3" id="location" name="listing[location]" placeholder="e.g. Hazratganj, Lucknow" required>
-            </div>
-
-            <!-- Description -->
-            <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-              <textarea class="form-control rounded-3" id="description" name="listing[description]" rows="3" placeholder="Brief about the place..." required></textarea>
-            </div>
-
-            <!-- Contact -->
-            <div class="mb-3">
-              <label for="contact" class="form-label">Contact</label>
-              <input type="text" class="form-control rounded-3" id="contact" name="listing[contact]" placeholder="e.g. 9876543210">
-            </div>
-
-            <!-- Image -->
-            <div class="mb-3">
-              <label for="image" class="form-label">Image URL</label>
-              <input type="url" class="form-control rounded-3" id="image" name="listing[image]" placeholder="https://source.unsplash.com/..." >
-            </div>
-
-            <!-- Submit Button -->
-            <div class="d-grid">
-              <button type="submit" class="btn btn-dark rounded-3 fw-semibold">
-                ➕ Add Listing
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
+  <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+    
+    <!-- Business Title -->
+    <div class="mb-3">
+      <label class="form-label">Business Title</label>
+      <input type="text" class="form-control" name="listing[title]" required>
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please enter the business title.</div>
     </div>
-  </div>
+
+    <!-- Business Name -->
+    <div class="mb-3">
+      <label class="form-label">Business Name</label>
+      <input type="text" class="form-control" name="listing[name]" required>
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please enter the business name.</div>
+    </div>
+
+    <!-- Location -->
+    <div class="mb-3">
+      <label class="form-label">Location</label>
+      <input type="text" class="form-control" name="listing[location]" required>
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please provide the location.</div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" rows="3" name="listing[description]" required></textarea>
+      <div class="valid-feedback">Looks great!</div>
+      <div class="invalid-feedback">Please write a short description.</div>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="mb-3">
+      <label class="form-label">Upload Image</label>
+      <input type="file" class="form-control" name="listing[image]" required>
+      <div class="valid-feedback">Image uploaded.</div>
+      <div class="invalid-feedback">Please upload an image.</div>
+    </div>
+
+    <!-- Category & Opening Hours -->
+    
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select class="form-select" name="listing[category]" required>
+          <option value="">Choose...</option>
+          <option>Stationery</option>
+          <option>Bookstore</option>
+          <option>Cyber Cafe</option>
+          <option>Library</option>
+          <option>Coaching Centre</option>
+        </select>
+        <div class="valid-feedback">Category selected.</div>
+        <div class="invalid-feedback">Please select a category.</div>
+      </div>
+
+   <div class="mb-3">
+  <label for="tags"
+   class="form-label">Tags (comma separated)</label>
+  <input type="text"
+   class="form-control" 
+   name="listing[tags]"
+    placeholder="e.g. popular, budget friendly, verified">
+    </div>
+    
+      <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Opening Hours</label>
+        <input type="text" class="form-control" name="listing[openHours]" required>
+        <div class="valid-feedback">Good hours!</div>
+        <div class="invalid-feedback">Please mention the opening hours.</div>
+      </div>
+    
+
+    <!-- Contact -->
+    <div class=" col-md-6 mb-3">
+      <label class="form-label">Contact</label>
+      <input type="tel" class="form-control" name="listing[contact]" required>
+      <div class="valid-feedback">Contact looks fine.</div>
+      <div class="invalid-feedback">Please provide a contact number.</div>
+    </div>
+    </div>
+
+      <div class="row">
+    <!-- WhatsApp Number -->
+    <div class=" col-md-6 mb-3">
+      <label class="form-label">WhatsApp Number (Optional)</label>
+      <input type="tel" class="form-control" name="listing[whatsappNumber]">
+    </div>
+
+    <!-- Email -->
+    <div class=" col-md-6 mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" name="listing[email]" required>
+      <div class="invalid-feedback">Please enter a valid email address.</div>
+    </div>
+    </div>
+
+    <!-- Website -->
+    <div class="mb-3">
+      <label class="form-label">Website (Optional)</label>
+      <input type="url" class="form-control" name="listing[website]">
+    </div>
+
+    <!-- Google Map Link -->
+    <div class="mb-3">
+      <label class="form-label">Google Map Link (Optional)</label>
+      <input type="url" class="form-control" name="listing[googleMapLink]">
+    </div>
+
+    <div class="row">
+    <!-- Facebook Page -->
+    <div class=" col-md-6 mb-3">
+      <label class="form-label">Facebook Page (Optional)</label>
+      <input type="url" class="form-control" name="listing[facebookPage]">
+    </div>
+
+    <!-- Instagram Page -->
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Instagram Page (Optional)</label>
+      <input type="url" class="form-control" name="listing[instagramPage]">
+    </div>
+    </div>
+
+    <button type="submit" class="btn btn-success px-4">Submit</button>
+  </form>
 </div>
-
-
-
-
+</body>
