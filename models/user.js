@@ -12,7 +12,13 @@ const userSchema = new schema({
         required: true,
         unique: true
     },
-    profileImage: { type: String, default: '/images/default-profile.jpg' }
+    profileImage: {
+    url: {
+    type: String,
+    default: '/images/default-profile.jpg'
+    },
+    filename: String
+    }
 });
 
 userSchema.plugin(passportLocalMongoose, {

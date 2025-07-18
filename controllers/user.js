@@ -42,15 +42,60 @@ module.exports.Logout= async(req, res) => {
     req.flash("success", "Logged out successfully!");
     res.redirect("/listings");
   });
-
-  module.exports.renderProfileSettingsForm = (req, res) => {
-  res.render('users/settings', { user: req.user });
 };
 
+// Show Profile Settings Form
+module.exports.renderProfileSettingsForm = async (req, res) => {
+  res.render("users/settings", { user: req.user });
+};
+
+// Handle Profile Update (username, email, profileImage)
 module.exports.updateProfile = async (req, res) => {
   const { username, email } = req.body;
-  const user = await User.findByIdAndUpdate(req.user._id, { username, email }, { new: true });
-  req.flash('success', 'Profile updated successfully!');
-  res.redirect('/profile/settings');
+  const user = await User.findById(req.user._id);
+
+  user.username = username;
+  user.email = email;
+
+  if (req.file) {
+    user.profileImage = { url: req.file.path, filename: req.file.filename };
+  }
+
+  await user.save();
+
+  req.flash("success", "Profile updated successfully!");
+  res.redirect("/");
 };
+
+module.exports.renderChangePasswordForm = (req, res) => {
+  res.render('users/changePassword'); // You’ll create this EJS file
 };
+
+module.exports.changePassword = async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+  const user = await User.findById(req.user._id);
+
+  const isMatch = await user.authenticate(currentPassword);
+
+  if (!isMatch.user) {
+    req.flash('error', 'Incorrect current password!');
+    return res.redirect('/profile/change-password');
+  }
+
+  if (currentPassword === newPassword) {
+    req.flash('error', 'New password cannot be the same as current password!');
+    return res.redirect('/profile/change-password');
+  }
+
+  await user.setPassword(newPassword);
+  await user.save();
+
+  req.flash('success', 'Password updated successfully!');
+  res.redirect('/listings');
+};
+
+module.exports.renderDashboard = async (req, res) => {
+  const user = await User.findById(req.user._id);
+  res.render('users/dashboard', { user });
+};
+

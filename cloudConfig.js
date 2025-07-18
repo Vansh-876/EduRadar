@@ -11,7 +11,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'EduRadar_DEV',
-    allowedformats : ['png', "jpg", "jpeg"],
+    allowed_formats : ['png', "jpg", "jpeg"],
   },
 });
 
