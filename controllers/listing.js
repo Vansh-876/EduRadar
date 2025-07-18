@@ -1,9 +1,5 @@
 const Listing = require("../models/listing");
 
-module.exports.homepage = (req, res) => {
-  res.send("Welcome to Homepage!");
-};
-
 module.exports.index = async (req, res, next) => {
   const { category, search, location } = req.query;
   let filter = {};

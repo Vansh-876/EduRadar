@@ -3,8 +3,9 @@ const router = express.Router();
 const passport = require("passport");
 const User = require("../models/user");
 const wrapAsync = require("../utils/wrapAsync");
-const { storeReturnTo } = require("../middleware.js");
+const { storeReturnTo ,isLoggedIn } = require("../middleware.js");
 const userController = require("../controllers/user.js");
+const upload = require('../multer');
 
 // Show SignUp form
 router.route("/register")
@@ -19,5 +20,17 @@ router.route("/login")
 }), userController.Login);
 
  router.get("/logout", userController.Logout);
+
+router.route("/profile/settings")
+  .get(isLoggedIn, userController.renderProfileSettingsForm)
+  .post(isLoggedIn, upload.single('profileImage'), userController.updateProfile);
+
+  router
+  .route('/profile/change-password')
+  .get(isLoggedIn, userController.renderChangePasswordForm)
+  .post(isLoggedIn, userController.changePassword);
+
+  router.get('/dashboard', isLoggedIn, userController.renderDashboard);
+
 
 module.exports = router;

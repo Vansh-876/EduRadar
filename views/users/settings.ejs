@@ -1,0 +1,36 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+  <h3 class="text-center fw-semibold mb-4">⚙️ Profile Settings</h3>
+
+  <form action="/profile/settings" method="POST" enctype="multipart/form-data" class="card p-4 shadow-sm rounded-4 mx-auto" style="max-width: 500px;">
+    
+    <!-- Profile Image -->
+    <div class="text-center mb-3">
+      <img src="<%= user.profileImage ? user.profileImage.url : '/images/default-profile.jpg' %>" 
+      alt="Profile" class="rounded-circle" width="80" height="80">
+    </div>
+
+    <!-- Username -->
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-control rounded-3" name="username" value="<%= user.username %>" required>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control rounded-3" name="email" value="<%= user.email %>" required>
+    </div>
+
+    <!-- Change Profile Image -->
+    <div class="mb-3">
+      <label class="form-label">Change Profile Image</label>
+      <input type="file" class="form-control rounded-3" name="profileImage" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 rounded-3">Save Changes</button>
+
+  </form>
+</div>
+

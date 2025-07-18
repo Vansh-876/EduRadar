@@ -32,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
+app.use('/images', express.static(path.join(__dirname, "images")));
 
 app.use((req, res, next) => {
   res.locals.activePage = null;
@@ -88,11 +89,15 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.locals.currentUser = req.user;
+app.use(async (req, res, next) => {
+  if (req.isAuthenticated()) {
+    const user = await User.findById(req.user._id);
+    res.locals.currentUser = user;
+  } else {
+    res.locals.currentUser = null;
+  }
   next();
 });
-
 
 app.use((req, res, next) => {
   res.locals.search = req.query.search || "";
