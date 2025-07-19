@@ -1,4 +1,5 @@
 const Listing = require("../models/listing");
+const { isVendor } = require('../middleware');
 
 module.exports.index = async (req, res, next) => {
   const { category, search, location } = req.query;

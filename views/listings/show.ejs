@@ -49,14 +49,12 @@
       </ul>
 
       <!-- Owner Actions -->
-      <% if (currentUser && listing.owner && currentUser._id.toString() === listing.owner.toString()) { %>
-        <div class="mb-3">
-          <a href="/listings/<%= listing._id %>/edit" class="btn btn-outline-primary">Edit</a>
-          <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST" style="display:inline;">
-            <button class="btn btn-outline-danger">Delete</button>
-          </form>
-        </div>
-      <% } %>
+   <% if (currentUser && currentUser.role.includes('vendor') && listing.owner && currentUser._id.toString() === listing.owner.toString()) { %>
+  <a href="/listings/<%= listing._id %>/edit" class="btn btn-outline-primary">Edit</a>
+  <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST" style="display:inline;">
+    <button class="btn btn-outline-danger">Delete</button>
+  </form>
+<% } %>
 
       <!-- Review Form -->
              <hr>
@@ -98,9 +96,12 @@
             <h5 class="card-title">@<%= review.author.username %></h5>
             <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
             <p class="card-text"><%= review.comment %></p>
-              <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-                <button class="btn btn-sm btn-dark">Delete</button>
-              </form>
+      <% if (currentUser && review.author && currentUser._id.toString() === review.author._id.toString()) { %>
+      <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+        <button class="btn btn-sm btn-dark">Delete</button>
+      </form>
+      <% } %>
+
           </div>
         </div>
       <% } %>

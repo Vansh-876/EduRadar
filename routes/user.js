@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 const User = require("../models/user");
 const wrapAsync = require("../utils/wrapAsync");
-const { storeReturnTo ,isLoggedIn } = require("../middleware.js");
+const { storeReturnTo ,isLoggedIn, isVendor } = require("../middleware.js");
 const userController = require("../controllers/user.js");
 const upload = require('../multer');
 
@@ -32,5 +32,8 @@ router.route("/profile/settings")
 
   router.get('/dashboard', isLoggedIn, userController.renderDashboard);
 
+router.get('/add-business', isVendor, (req, res) => {
+  res.redirect('/listings/new');
+});
 
 module.exports = router;
