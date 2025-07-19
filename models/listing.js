@@ -10,7 +10,7 @@ const listingSchema = new Schema({
   description: { type: String, required: true },
   location: { type: String, required: true },
   contact: { type: String, required: true },
-  openHours: {type: String,  required: true }, 
+  openHours: {type: String,  required: false }, 
   whatsappNumber: { type: String, required: true },
   email: { type: String, required: true },
   website: String,

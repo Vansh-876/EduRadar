@@ -18,7 +18,12 @@ const userSchema = new schema({
     default: '/images/default-profile.jpg'
     },
     filename: String
-    }
+    },
+    role: {
+    type: [String],
+    enum: ['user', 'vendor', 'admin'],
+    default: 'user'
+  }
 });
 
 userSchema.plugin(passportLocalMongoose, {

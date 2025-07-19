@@ -16,6 +16,7 @@ const Review = require("./models/review.js");
 const listingsRoutes = require("./routes/listing.js");
 const reviewsRoutes = require("./routes/review.js");
 const UserRoutes = require("./routes/user.js");
+const vendorRoutes = require('./routes/vendor.js');
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
@@ -109,6 +110,7 @@ app.get('/', homeController.homepage);
 app.use("/", listingsRoutes);
 app.use("/listings/:id/reviews", reviewsRoutes);
 app.use("/", UserRoutes);
+app.use('/', vendorRoutes);
 
 
 // 404 Error Handling

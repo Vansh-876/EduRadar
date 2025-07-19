@@ -38,9 +38,9 @@
 
     <div class="collapse navbar-collapse " id="navbarNav">
       <div class="navbar-nav">
-         <a class="nav-link" href="/">Home</a>
+         <a class="nav-link" href="/"><b>Home</b></a>
         <a class="nav-link <% if(activePage === 'listings'){ %>active<% } %>" href="/listings">
-          <i class="bi bi-card-list"></i>Explore
+          <i class="bi bi-card-list"></i><b>Explore</b>
         </a>
       </div>
 
@@ -53,44 +53,57 @@
     </div>
 
     <div class="navbar-nav ms-auto">
-              <a class="nav-link <% if(activePage === 'create'){ %>active<% } %>" href="/listings/new">
-          <i class="bi bi-plus-circle"></i>New Listing
-        </a>
-      <% if (!currentUser ) { %>
-        <a class="nav-link" href="/register"><B>Register</B></a>
-      <% } %>
-<% if (currentUser) { %>
-<div class="dropdown">
-  <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-    <img 
-      src="<%= currentUser.profileImage && currentUser.profileImage.url ? currentUser.profileImage.url : '/images/default-profile.jpg' %>" 
-      alt="user" width="40" height="40" class="rounded-circle">
-  </a>
-  <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 p-3" aria-labelledby="profileDropdown" style="min-width: 260px; border-radius: 15px;">
-    
-    <li class="text-center">
-      <img 
-        src="<%= currentUser.profileImage && currentUser.profileImage.url ? currentUser.profileImage.url : '/images/default-profile.jpg' %>" 
-        alt="user" width="60" height="60" class="rounded-circle mb-2">
-      <div class="fw-semibold fs-6"><%= currentUser.username %></div>
-      <div class="text-muted small mb-2"><%= currentUser.email %></div>
-    </li>
+<a class="nav-link" href="/add-business">
+  <i class="bi bi-plus-circle"></i> <b>Add Your Business</b>
+</a>
 
-    <li><hr class="dropdown-divider"></li>
+  <% if (!currentUser) { %>
+  <a class="nav-link" href="/register"><b>Register</b></a>
 
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="/profile/settings"><i class="bi bi-person-gear"></i> My Profile</a></li>
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="/notifications"><i class="bi bi-bell"></i> Notifications</a></li>
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="/bookmarks"><i class="bi bi-bookmark-star"></i> Saved Items</a></li>
-    <li><a class="dropdown-item d-flex align-items-center gap-2" href="/profile/change-password"><i class="bi bi-key"></i> Change Password</a></li>
+<% } else if (currentUser.role.includes('vendor')) { %>
+  <!-- Vendor Navbar -->
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="<%= currentUser.profileImage?.url || '/images/default-profile.jpg' %>" alt="user" width="40" height="40" class="rounded-circle">
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 p-3" aria-labelledby="profileDropdown" style="min-width: 260px; border-radius: 15px;">
+      <li class="text-center">
+        <img src="<%= currentUser.profileImage?.url || '/images/default-profile.jpg' %>" alt="user" width="60" height="60" class="rounded-circle mb-2">
+        <div class="fw-semibold fs-6"><%= currentUser.username %></div>
+        <div class="text-muted small mb-2"><%= currentUser.email %></div>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item d-flex align-items-center gap-2" href="/vendor/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="/vendor/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+    </ul>
+  </div>
 
-    <li><hr class="dropdown-divider"></li>
+<% } else { %>
+  <!-- Normal User Navbar -->
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="<%= currentUser.profileImage?.url || '/images/default-profile.jpg' %>" alt="user" width="40" height="40" class="rounded-circle">
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 p-3" aria-labelledby="profileDropdown" style="min-width: 260px; border-radius: 15px;">
+      <li class="text-center">
+        <img src="<%= currentUser.profileImage?.url || '/images/default-profile.jpg' %>" alt="user" width="60" height="60" class="rounded-circle mb-2">
+        <div class="fw-semibold fs-6"><%= currentUser.username %></div>
+        <div class="text-muted small mb-2"><%= currentUser.email %></div>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item d-flex align-items-center gap-2" href="/profile/settings"><i class="bi bi-person-gear"></i> My Profile</a></li>
+      <li><a class="dropdown-item d-flex align-items-center gap-2" href="/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+      <li><a class="dropdown-item d-flex align-items-center gap-2" href="/notifications"><i class="bi bi-bell"></i> Notifications</a></li>
+      <li><a class="dropdown-item d-flex align-items-center gap-2" href="/bookmarks"><i class="bi bi-bookmark-star"></i> Saved Items</a></li>
+      <li><a class="dropdown-item d-flex align-items-center gap-2" href="/profile/change-password"><i class="bi bi-key"></i> Change Password</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+    </ul>
+  </div>
 
-    <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
-
-  </ul>
-</div>
 <% } %>
+
 
     </div>
   </div>

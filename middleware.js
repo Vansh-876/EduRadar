@@ -59,3 +59,11 @@ module.exports.validateReview = async (req, res, next) => {
     next();
   }
 };
+
+module.exports.isVendor = (req, res, next) => {
+  if (!req.isAuthenticated() || !req.user.role.includes('vendor')) {
+    req.flash('error', 'You must be logged in as Vendor');
+    return res.redirect('/vendor/login');
+  }
+  next();
+};
